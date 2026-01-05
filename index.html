@@ -5,54 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Experience & Customer Intelligence Roadmap Planning for 2026</title>
     <style>
-
-        /* --- Simple password gate (client-side) --- */
-        #authGate {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(8px);
-            z-index: 999999;
-        }
-
-        #authCard {
-            width: min(420px, 92vw);
-            padding: 24px;
-            border-radius: 16px;
-            background: rgba(20, 22, 35, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        #authCard h2 { font-size: 18px; margin-bottom: 8px; color: #F8F6F3; }
-        #authCard p { opacity: 0.85; margin-bottom: 14px; font-size: 14px; color: #CAC9C7; line-height: 1.4; }
-
-        #authRow { display: flex; gap: 10px; }
-        #authInput {
-            flex: 1;
-            padding: 10px 12px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            background: rgba(0, 0, 0, 0.25);
-            color: #fff;
-            outline: none;
-        }
-        #authBtn {
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            background: rgba(255, 255, 255, 0.10);
-            color: #fff;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        #authBtn:hover { background: rgba(255, 255, 255, 0.16); }
-
-        #authErr { color: #ffb4b4; font-size: 13px; margin-top: 10px; min-height: 18px; }
-        /* --- End password gate --- */
-
         * {
             margin: 0;
             padding: 0;
@@ -61,8 +13,8 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #0C0E1C 0%, #061F22 100%);
-            color: #F8F6F3;
+            background: #ffffff;
+            color: #1a1d21;
             overflow: hidden;
             height: 100vh;
         }
@@ -100,7 +52,7 @@
             left: 0;
             right: 0;
             height: 40px;
-            background: linear-gradient(to top, rgba(12, 14, 28, 0.95) 0%, transparent 100%);
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, transparent 100%);
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -121,12 +73,12 @@
         }
 
         .slide::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #91E3EA 0%, #97D3CB 100%);
+            background: linear-gradient(135deg, #53a5a5 0%, #53a5a5 100%);
             border-radius: 10px;
         }
 
         .slide::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #97D3CB 0%, #91E3EA 100%);
+            background: linear-gradient(135deg, #53a5a5 0%, #53a5a5 100%);
         }
 
         .slide.active {
@@ -151,16 +103,16 @@
             display: flex;
             gap: 15px;
             z-index: 1000;
-            background: rgba(12, 14, 28, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             padding: 15px 30px;
             border-radius: 50px;
-            border: 2px solid #244E4D;
+            border: 2px solid #244e4d;
             width: fit-content;
         }
 
         .nav-button {
-            background: linear-gradient(135deg, #244E4D 0%, #0D3F43 100%);
-            color: #91E3EA;
+            background: linear-gradient(135deg, #244e4d 0%, #0D3F43 100%);
+            color: #53a5a5;
             border: none;
             padding: 12px 30px;
             border-radius: 25px;
@@ -171,9 +123,9 @@
         }
 
         .nav-button:hover {
-            background: linear-gradient(135deg, #0D3F43 0%, #244E4D 100%);
+            background: linear-gradient(135deg, #0D3F43 0%, #244e4d 100%);
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(145, 227, 234, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .nav-button:disabled {
@@ -182,7 +134,7 @@
         }
 
         .slide-counter {
-            color: #97D3CB;
+            color: #53a5a5;
             font-size: 14px;
             display: flex;
             align-items: center;
@@ -205,7 +157,7 @@
         }
 
         .dot.active {
-            background: #91E3EA;
+            background: #53a5a5;
             width: 24px;
             border-radius: 4px;
         }
@@ -219,13 +171,13 @@
         .slide-title {
             font-size: 36px;
             font-weight: 700;
-            color: #91E3EA;
+            color: #53a5a5;
             margin-bottom: 10px;
         }
 
         .slide-subtitle {
             font-size: 16px;
-            color: #CAC9C7;
+            color: #3e444d;
         }
 
         /* Title Slide */
@@ -243,26 +195,26 @@
         .main-title {
             font-size: 48px;
             font-weight: 700;
-            color: #91E3EA;
+            color: #53a5a5;
             margin-bottom: 20px;
         }
 
         .company-name {
             font-size: 42px;
-            color: #FFAF01;
+            color: #53a5a5;
             font-weight: 600;
             margin-bottom: 15px;
         }
 
         .subtitle {
             font-size: 18px;
-            color: #CAC9C7;
+            color: #3e444d;
             margin-bottom: 40px;
         }
 
         .highlight-box {
-            background: linear-gradient(135deg, #244E4D 0%, #0D3F43 100%);
-            border: 2px solid #91E3EA;
+            background: linear-gradient(135deg, #244e4d 0%, #0D3F43 100%);
+            border: 2px solid #53a5a5;
             border-radius: 20px;
             padding: 30px;
             margin-top: 30px;
@@ -277,7 +229,7 @@
         .stage-number-large {
             font-size: 120px;
             font-weight: 700;
-            color: #91E3EA;
+            color: #53a5a5;
             line-height: 1;
             margin: 20px 0;
         }
@@ -285,13 +237,13 @@
         .stage-name-large {
             font-size: 42px;
             font-weight: 700;
-            color: #F8F6F3;
+            color: #1a1d21;
             margin-bottom: 20px;
         }
 
         .stage-description {
             font-size: 18px;
-            color: #CAC9C7;
+            color: #3e444d;
             max-width: 900px;
             margin: 0 auto;
             line-height: 1.6;
@@ -310,7 +262,7 @@
             left: 5%;
             right: 5%;
             height: 4px;
-            background: linear-gradient(90deg, #0454E8 0%, #1000EC 25%, #FFAF01 50%, #FD6F72 75%, #91E3EA 100%);
+            background: linear-gradient(90deg, #0454E8 0%, #1000EC 25%, #53a5a5 50%, #244e4d 75%, #53a5a5 100%);
             z-index: 1;
         }
 
@@ -354,29 +306,79 @@
             transition: all 0.3s ease;
             border: 3px solid transparent;
         }
+    
+    .stage-item:nth-child(1) .stage-dot { background: #e8f4f4; border-color: #e8f4f4; color: #1a1d21; }
+    .stage-item:nth-child(2) .stage-dot { background: #b3d9d9; border-color: #b3d9d9; color: #1a1d21; }
+    .stage-item:nth-child(3) .stage-dot { background: #80bfbf; border-color: #80bfbf; color: #ffffff; }
+    .stage-item:nth-child(4) .stage-dot { background: #53a5a5; border-color: #53a5a5; color: #ffffff; }
+    .stage-item:nth-child(5) .stage-dot { background: #244e4d; border-color: #244e4d; color: #ffffff; }
+    .stage-item.current .stage-dot { background: #53a5a5 !important; border-color: #53a5a5 !important; color: #ffffff !important; transform: scale(1.3); }
 
-        .stage-item.stage-1 .stage-dot { background: #0454E8; color: #F8F6F3; }
-        .stage-item.stage-2 .stage-dot { background: #1000EC; color: #F8F6F3; }
-        .stage-item.stage-3 .stage-dot { background: #FFAF01; color: #0C0E1C; }
-        .stage-item.stage-4 .stage-dot { background: #FD6F72; color: #F8F6F3; }
-        .stage-item.stage-5 .stage-dot { background: #91E3EA; color: #0C0E1C; }
+        .stage-item.stage-1 .stage-dot { background: #0454E8; color: #1a1d21; }
+    
+    .stage-item:nth-child(1) .stage-dot { background: #e8f4f4; border-color: #e8f4f4; color: #1a1d21; }
+    .stage-item:nth-child(2) .stage-dot { background: #b3d9d9; border-color: #b3d9d9; color: #1a1d21; }
+    .stage-item:nth-child(3) .stage-dot { background: #80bfbf; border-color: #80bfbf; color: #ffffff; }
+    .stage-item:nth-child(4) .stage-dot { background: #53a5a5; border-color: #53a5a5; color: #ffffff; }
+    .stage-item:nth-child(5) .stage-dot { background: #244e4d; border-color: #244e4d; color: #ffffff; }
+    .stage-item.current .stage-dot { background: #53a5a5 !important; border-color: #53a5a5 !important; color: #ffffff !important; transform: scale(1.3); }
+        .stage-item.stage-2 .stage-dot { background: #1000EC; color: #1a1d21; }
+    
+    .stage-item:nth-child(1) .stage-dot { background: #e8f4f4; border-color: #e8f4f4; color: #1a1d21; }
+    .stage-item:nth-child(2) .stage-dot { background: #b3d9d9; border-color: #b3d9d9; color: #1a1d21; }
+    .stage-item:nth-child(3) .stage-dot { background: #80bfbf; border-color: #80bfbf; color: #ffffff; }
+    .stage-item:nth-child(4) .stage-dot { background: #53a5a5; border-color: #53a5a5; color: #ffffff; }
+    .stage-item:nth-child(5) .stage-dot { background: #244e4d; border-color: #244e4d; color: #ffffff; }
+    .stage-item.current .stage-dot { background: #53a5a5 !important; border-color: #53a5a5 !important; color: #ffffff !important; transform: scale(1.3); }
+        .stage-item.stage-3 .stage-dot { background: #53a5a5; color: #ffffff; }
+    
+    .stage-item:nth-child(1) .stage-dot { background: #e8f4f4; border-color: #e8f4f4; color: #1a1d21; }
+    .stage-item:nth-child(2) .stage-dot { background: #b3d9d9; border-color: #b3d9d9; color: #1a1d21; }
+    .stage-item:nth-child(3) .stage-dot { background: #80bfbf; border-color: #80bfbf; color: #ffffff; }
+    .stage-item:nth-child(4) .stage-dot { background: #53a5a5; border-color: #53a5a5; color: #ffffff; }
+    .stage-item:nth-child(5) .stage-dot { background: #244e4d; border-color: #244e4d; color: #ffffff; }
+    .stage-item.current .stage-dot { background: #53a5a5 !important; border-color: #53a5a5 !important; color: #ffffff !important; transform: scale(1.3); }
+        .stage-item.stage-4 .stage-dot { background: #244e4d; color: #1a1d21; }
+    
+    .stage-item:nth-child(1) .stage-dot { background: #e8f4f4; border-color: #e8f4f4; color: #1a1d21; }
+    .stage-item:nth-child(2) .stage-dot { background: #b3d9d9; border-color: #b3d9d9; color: #1a1d21; }
+    .stage-item:nth-child(3) .stage-dot { background: #80bfbf; border-color: #80bfbf; color: #ffffff; }
+    .stage-item:nth-child(4) .stage-dot { background: #53a5a5; border-color: #53a5a5; color: #ffffff; }
+    .stage-item:nth-child(5) .stage-dot { background: #244e4d; border-color: #244e4d; color: #ffffff; }
+    .stage-item.current .stage-dot { background: #53a5a5 !important; border-color: #53a5a5 !important; color: #ffffff !important; transform: scale(1.3); }
+        .stage-item.stage-5 .stage-dot { background: #53a5a5; color: #ffffff; }
+    
+    .stage-item:nth-child(1) .stage-dot { background: #e8f4f4; border-color: #e8f4f4; color: #1a1d21; }
+    .stage-item:nth-child(2) .stage-dot { background: #b3d9d9; border-color: #b3d9d9; color: #1a1d21; }
+    .stage-item:nth-child(3) .stage-dot { background: #80bfbf; border-color: #80bfbf; color: #ffffff; }
+    .stage-item:nth-child(4) .stage-dot { background: #53a5a5; border-color: #53a5a5; color: #ffffff; }
+    .stage-item:nth-child(5) .stage-dot { background: #244e4d; border-color: #244e4d; color: #ffffff; }
+    .stage-item.current .stage-dot { background: #53a5a5 !important; border-color: #53a5a5 !important; color: #ffffff !important; transform: scale(1.3); }
 
         .stage-item.current .stage-dot {
-            transform: scale(1.2);
-            box-shadow: 0 0 30px rgba(145, 227, 234, 0.6);
-            border-color: #F8F6F3;
-        }
+        border-color: #53a5a5;
+        background: #53a5a5;
+        color: #ffffff;
+        transform: scale(1.2);
+    }
+    
+    .stage-item:nth-child(1) .stage-dot { background: #e8f4f4; border-color: #e8f4f4; color: #1a1d21; }
+    .stage-item:nth-child(2) .stage-dot { background: #b3d9d9; border-color: #b3d9d9; color: #1a1d21; }
+    .stage-item:nth-child(3) .stage-dot { background: #80bfbf; border-color: #80bfbf; color: #ffffff; }
+    .stage-item:nth-child(4) .stage-dot { background: #53a5a5; border-color: #53a5a5; color: #ffffff; }
+    .stage-item:nth-child(5) .stage-dot { background: #244e4d; border-color: #244e4d; color: #ffffff; }
+    .stage-item.current .stage-dot { background: #53a5a5 !important; border-color: #53a5a5 !important; color: #ffffff !important; transform: scale(1.3); }
 
         .stage-label {
             font-size: 18px;
             font-weight: 600;
-            color: #CAC9C7;
+            color: #3e444d;
             margin-bottom: 8px;
             white-space: nowrap;
         }
 
         .stage-item.current .stage-label {
-            color: #91E3EA;
+            color: #53a5a5;
         }
 
         .stage-desc {
@@ -395,20 +397,20 @@
 
         .challenge-box {
             background: rgba(253, 111, 114, 0.1);
-            border-left: 4px solid #FD6F72;
+            border-left: 4px solid #244e4d;
             padding: 20px;
             border-radius: 8px;
         }
 
         .challenge-box h3 {
-            color: #FD6F72;
+            color: #244e4d;
             font-size: 16px;
             margin-bottom: 10px;
             font-weight: 600;
         }
 
         .challenge-box p {
-            color: #CAC9C7;
+            color: #3e444d;
             font-size: 14px;
             line-height: 1.5;
             margin-bottom: 12px;
@@ -416,20 +418,20 @@
 
         .action-box {
             background: rgba(145, 227, 234, 0.1);
-            border-left: 4px solid #91E3EA;
+            border-left: 4px solid #53a5a5;
             padding: 20px;
             border-radius: 8px;
         }
 
         .action-box h3 {
-            color: #91E3EA;
+            color: #53a5a5;
             font-size: 16px;
             margin-bottom: 10px;
             font-weight: 600;
         }
 
         .action-box p {
-            color: #CAC9C7;
+            color: #3e444d;
             font-size: 14px;
             line-height: 1.5;
             margin-bottom: 12px;
@@ -441,7 +443,7 @@
         }
 
         .action-box li {
-            color: #CAC9C7;
+            color: #3e444d;
             font-size: 13px;
             padding: 6px 0;
             padding-left: 20px;
@@ -452,7 +454,7 @@
             content: "→";
             position: absolute;
             left: 0;
-            color: #91E3EA;
+            color: #53a5a5;
             font-weight: 700;
         }
 
@@ -466,7 +468,8 @@
         }
 
         .competency-card {
-            background: linear-gradient(135deg, #181F3E 0%, #2B3038 100%);
+            background: #ffffff;
+            border: 2px solid;
             border-radius: 12px;
             padding: 20px;
             border-left: 5px solid;
@@ -478,11 +481,11 @@
             box-shadow: 0 8px 25px rgba(145, 227, 234, 0.2);
         }
 
-        .competency-card.lead { border-color: #91E3EA; }
+        .competency-card.lead { border-color: #53a5a5; }
         .competency-card.realize { border-color: #1000EC; }
-        .competency-card.activate { border-color: #FFAF01; }
+        .competency-card.activate { border-color: #53a5a5; }
         .competency-card.enlighten { border-color: #0454E8; }
-        .competency-card.respond { border-color: #FD6F72; }
+        .competency-card.respond { border-color: #244e4d; }
         .competency-card.disrupt { border-color: #CF91A2; }
 
         .competency-header {
@@ -495,7 +498,7 @@
         .competency-name {
             font-size: 20px;
             font-weight: 700;
-            color: #F8F6F3;
+            color: #53a5a5;
         }
 
         .competency-score {
@@ -506,13 +509,13 @@
             background: rgba(145, 227, 234, 0.1);
         }
 
-        .score-weak { color: #FD6F72; }
-        .score-adequate { color: #FFAF01; }
-        .score-strong { color: #91E3EA; }
+        .score-weak { color: #244e4d; }
+        .score-adequate { color: #53a5a5; }
+        .score-strong { color: #53a5a5; }
 
         .competency-description {
             font-size: 13px;
-            color: #CAC9C7;
+            color: #1a1d21;
             margin-bottom: 15px;
             line-height: 1.5;
         }
@@ -531,16 +534,16 @@
             border-radius: 3px;
         }
 
-        .lead .progress-fill { background: linear-gradient(90deg, #91E3EA 0%, #97D3CB 100%); }
-        .realize .progress-fill { background: linear-gradient(90deg, #1000EC 0%, #B3ADFF 100%); }
-        .activate .progress-fill { background: linear-gradient(90deg, #FFAF01 0%, #FFDE95 100%); }
+        .lead .progress-fill { background: linear-gradient(90deg, #53a5a5 0%, #53a5a5 100%); }
+        .realize .progress-fill { background: linear-gradient(90deg, #1000EC 0%, #53a5a5 100%); }
+        .activate .progress-fill { background: linear-gradient(90deg, #53a5a5 0%, #FFDE95 100%); }
         .enlighten .progress-fill { background: linear-gradient(90deg, #0454E8 0%, #8CB4FF 100%); }
-        .respond .progress-fill { background: linear-gradient(90deg, #FD6F72 0%, #FD9799 100%); }
+        .respond .progress-fill { background: linear-gradient(90deg, #244e4d 0%, #FD9799 100%); }
         .disrupt .progress-fill { background: linear-gradient(90deg, #CF91A2 0%, #EDD4DB 100%); }
 
         .skills-list {
             font-size: 12px;
-            color: #B7B7B7;
+            color: #3e444d;
             list-style: none;
         }
 
@@ -554,7 +557,7 @@
             content: "→";
             position: absolute;
             left: 0;
-            color: #91E3EA;
+            color: #53a5a5;
         }
 
         /* Recommendations Slide */
@@ -566,7 +569,7 @@
 
         .recommendation-item {
             background: rgba(145, 227, 234, 0.05);
-            border-left: 4px solid #91E3EA;
+            border-left: 4px solid #53a5a5;
             padding: 18px;
             margin-bottom: 15px;
             border-radius: 8px;
@@ -580,13 +583,13 @@
         }
 
         .recommendation-item h3 {
-            color: #91E3EA;
+            color: #53a5a5;
             font-size: 18px;
             margin-bottom: 8px;
         }
 
         .recommendation-item p {
-            color: #CAC9C7;
+            color: #3e444d;
             line-height: 1.5;
             margin-bottom: 8px;
             font-size: 14px;
@@ -602,9 +605,9 @@
             letter-spacing: 0.5px;
         }
 
-        .priority-critical { background: #FC2125; color: #F8F6F3; }
-        .priority-high { background: #FFAF01; color: #0C0E1C; }
-        .priority-medium { background: #0454E8; color: #F8F6F3; }
+        .priority-critical { background: #FC2125; color: #1a1d21; }
+        .priority-high { background: #53a5a5; color: #ffffff; }
+        .priority-medium { background: #0454E8; color: #ffffff; }
 
         /* Timeline Slide */
         .timeline-container {
@@ -626,8 +629,8 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background: #91E3EA;
-            border: 4px solid #0C0E1C;
+            background: #53a5a5;
+            border: 4px solid #ffffff;
         }
 
         .timeline-item:before {
@@ -646,7 +649,7 @@
 
         .timeline-phase {
             font-size: 13px;
-            color: #97D3CB;
+            color: #53a5a5;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 8px;
@@ -654,7 +657,7 @@
 
         .timeline-title {
             font-size: 20px;
-            color: #F8F6F3;
+            color: #1a1d21;
             font-weight: 600;
             margin-bottom: 12px;
         }
@@ -664,7 +667,7 @@
         }
 
         .timeline-actions li {
-            color: #CAC9C7;
+            color: #3e444d;
             padding: 6px 0;
             padding-left: 22px;
             position: relative;
@@ -675,7 +678,7 @@
             content: "✓";
             position: absolute;
             left: 0;
-            color: #91E3EA;
+            color: #53a5a5;
             font-weight: 700;
         }
 
@@ -707,13 +710,13 @@
         }
 
         .metric-label {
-            color: #CAC9C7;
+            color: #3e444d;
             font-size: 16px;
             margin-bottom: 8px;
         }
 
         .metric-target {
-            color: #B3ADFF;
+            color: #53a5a5;
             font-size: 13px;
         }
 
@@ -728,7 +731,7 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #244E4D;
+            background: #244e4d;
             border-radius: 4px;
         }
 
@@ -745,8 +748,8 @@
             padding: 10px 15px;
             border-radius: 8px;
             font-size: 12px;
-            color: #97D3CB;
-            border: 1px solid #244E4D;
+            color: #53a5a5;
+            border: 1px solid #244e4d;
         }
 
         @media (max-width: 1280px) {
@@ -767,58 +770,6 @@
 </head>
 <body>
 
-    <!-- Password Gate (client-side, not secure for sensitive content) -->
-    <div id="authGate" aria-hidden="false">
-        <div id="authCard">
-            <h2>Enter password</h2>
-            <p>This page is protected.</p>
-
-            <div id="authRow">
-                <input id="authInput" type="password" placeholder="Password" autocomplete="current-password" />
-                <button id="authBtn" type="button">Unlock</button>
-            </div>
-
-            <div id="authErr"></div>
-        </div>
-    </div>
-
-    <script>
-        // Change this password:
-        const PASSWORD = "letmein";
-
-        const gate = document.getElementById("authGate");
-        const input = document.getElementById("authInput");
-        const btn = document.getElementById("authBtn");
-        const err = document.getElementById("authErr");
-
-        function unlock() {
-            if (input.value === PASSWORD) {
-                sessionStorage.setItem("authed", "true");
-                gate.style.display = "none";
-                err.textContent = "";
-            } else {
-                err.textContent = "Incorrect password.";
-                input.value = "";
-                input.focus();
-            }
-        }
-
-        // If already authed in this tab session, skip gate
-        if (sessionStorage.getItem("authed") === "true") {
-            gate.style.display = "none";
-        } else {
-            // Focus the input as soon as possible
-            setTimeout(() => input.focus(), 0);
-        }
-
-        btn.addEventListener("click", unlock);
-        input.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") unlock();
-        });
-    </script>
-    <!-- End Password Gate -->
-
-
     <div class="slides-container">
         <!-- Slide 1: Title -->
         <div class="slide active title-slide">
@@ -826,9 +777,9 @@
             <div class="company-name">WooCommerce / Automattic</div>
             <p class="subtitle">December 2025 | 2026 Roadmap Planning Session</p>
             <div class="highlight-box">
-                <div style="font-size: 18px; color: #91E3EA; margin-bottom: 10px; font-weight: 600;">Current Status</div>
-                <div style="font-size: 16px; color: #CAC9C7; line-height: 1.6;">
-                    Transitioning from <strong style="color: #FFAF01;">Stage 2 (Initiate)</strong> to <strong style="color: #91E3EA;">Stage 3 (Mobilize)</strong>
+                <div style="font-size: 18px; color: #53a5a5; margin-bottom: 10px; font-weight: 600;">Current Status</div>
+                <div style="font-size: 16px; color: #ffffff; line-height: 1.6;">
+                    Transitioning from <strong style="color: #ffffff;">Stage 2 (Initiate)</strong> to <strong style="color: #ffffff;">Stage 3 (Mobilize)</strong>
                     <br><br>
                     Building systematic Customer Intelligence capabilities with Enterpret to drive Product Quality, 
                     JTBD excellence, Hosting & AI Adoption, and WooCommerce Simplicity.
@@ -886,7 +837,7 @@
                     <div class="stage-desc">Not yet focused on CI as strategic opportunity</div>
                 </div>
                 <div class="stage-label-item">
-                    <div class="stage-label" style="color: #91E3EA;">Initiate</div>
+                    <div class="stage-label" style="color: #53a5a5;">Initiate</div>
                     <div class="stage-desc">Kicking off isolated pockets of CI activities</div>
                 </div>
                 <div class="stage-label-item">
@@ -903,10 +854,10 @@
                 </div>
             </div>
             <div style="margin-top: 50px; text-align: center;">
-                <div style="background: rgba(145, 227, 234, 0.1); display: inline-block; padding: 25px 50px; border-radius: 12px; border: 2px solid #244E4D;">
-                    <div style="color: #97D3CB; font-size: 16px; margin-bottom: 10px;">Overall CI Maturity Score</div>
-                    <div style="color: #91E3EA; font-size: 56px; font-weight: 700;">2.5 / 5.0</div>
-                    <div style="color: #B3ADFF; font-size: 15px; margin-top: 10px;">Target: 3.5 by Q3 2026</div>
+                <div style="background: rgba(145, 227, 234, 0.1); display: inline-block; padding: 25px 50px; border-radius: 12px; border: 2px solid #244e4d;">
+                    <div style="color: #53a5a5; font-size: 16px; margin-bottom: 10px;">Overall CI Maturity Score</div>
+                    <div style="color: #53a5a5; font-size: 56px; font-weight: 700;">2.5 / 5.0</div>
+                    <div style="color: #53a5a5; font-size: 15px; margin-top: 10px;">Target: 3.5 by Q3 2026</div>
                 </div>
             </div>
         </div>
@@ -1035,9 +986,9 @@
                 <p class="slide-subtitle">Matt Mullenweg's feedback and recommended actions</p>
             </div>
             
-            <div style="background: rgba(253, 111, 114, 0.15); border: 2px solid #FD6F72; border-radius: 10px; padding: 15px; margin-bottom: 20px;">
-                <div style="color: #FD6F72; font-size: 17px; font-weight: 600; margin-bottom: 8px;">CEO Feedback Summary</div>
-                <div style="color: #F8F6F3; font-size: 14px; line-height: 1.5;">
+            <div style="background: rgba(253, 111, 114, 0.15); border: 2px solid #244e4d; border-radius: 10px; padding: 15px; margin-bottom: 20px;">
+                <div style="color: #244e4d; font-size: 17px; font-weight: 600; margin-bottom: 8px;">CEO Feedback Summary</div>
+                <div style="color: #1a1d21; font-size: 14px; line-height: 1.5;">
                     Matt expressed skepticism about Enterpret, preferring direct customer conversations and questioning the platform's value proposition.
                 </div>
             </div>
@@ -1074,9 +1025,9 @@
                 </div>
             </div>
 
-            <div style="padding: 15px; background: rgba(255, 175, 1, 0.1); border-left: 4px solid #FFAF01; border-radius: 8px;">
-                <div style="color: #FFAF01; font-size: 16px; font-weight: 600; margin-bottom: 8px;">Critical Next Step with Matt</div>
-                <div style="color: #CAC9C7; font-size: 14px; line-height: 1.5;">
+            <div style="padding: 15px; background: rgba(255, 175, 1, 0.1); border-left: 4px solid #53a5a5; border-radius: 8px;">
+                <div style="color: #53a5a5; font-size: 16px; font-weight: 600; margin-bottom: 8px;">Critical Next Step with Matt</div>
+                <div style="color: #3e444d; font-size: 14px; line-height: 1.5;">
                     <strong>Within 2 weeks:</strong> 30-min executive demo answering: <em>"Which Product Quality issues cost the most merchants, and which customers should we talk to first?"</em> Use Enterpret to identify answers in real-time, then facilitate direct merchant conversations.
                 </div>
             </div>
@@ -1090,138 +1041,138 @@
             </div>
 
             <!-- Why This Matters - Moved to Top -->
-            <div style="background: rgba(179, 173, 255, 0.1); border-left: 4px solid #B3ADFF; border-radius: 8px; padding: 12px; margin-bottom: 15px;">
-                <div style="color: #B3ADFF; font-size: 14px; font-weight: 600; margin-bottom: 6px;">💡 Why This Matters for WooCommerce</div>
-                <div style="color: #CAC9C7; font-size: 12px; line-height: 1.5;">
+            <div style="background: rgba(179, 173, 255, 0.1); border-left: 4px solid #53a5a5; border-radius: 8px; padding: 12px; margin-bottom: 15px;">
+                <div style="color: #53a5a5; font-size: 14px; font-weight: 600; margin-bottom: 6px;">💡 Why This Matters for WooCommerce</div>
+                <div style="color: #3e444d; font-size: 12px; line-height: 1.5;">
                     This systematic process demonstrates mature closed-loop feedback management: Using Enterpret to discover patterns + manual search for real-time insights → 
                     Converting to JIRA source of truth → Product team ships improvements → Optionally notifying merchants their feedback drove change. 
-                    This directly supports your <strong style="color: #FFAF01;">Product Quality North Star</strong> by prioritizing validated customer problems and building merchant trust. The CTL team expansion (adding 20 UX researchers) shows commitment to scaling discovery capacity.
+                    This directly supports your <strong style="color: #53a5a5;">Product Quality North Star</strong> by prioritizing validated customer problems and building merchant trust. The CTL team expansion (adding 20 UX researchers) shows commitment to scaling discovery capacity.
                 </div>
             </div>
             
             <!-- Feedback Sources -->
             <div style="text-align: center; margin-bottom: 15px;">
-                <div style="display: inline-flex; gap: 15px; padding: 10px 25px; background: rgba(179, 173, 255, 0.1); border: 2px solid #B3ADFF; border-radius: 8px;">
-                    <span style="color: #B3ADFF; font-size: 13px; font-weight: 600;">📥 Feedback Sources:</span>
-                    <span style="color: #CAC9C7; font-size: 13px;">App Reviews</span>
-                    <span style="color: #5F5D5A;">•</span>
-                    <span style="color: #CAC9C7; font-size: 13px;">Support Tickets</span>
-                    <span style="color: #5F5D5A;">•</span>
-                    <span style="color: #CAC9C7; font-size: 13px;">Surveys/NPS</span>
-                    <span style="color: #5F5D5A;">•</span>
-                    <span style="color: #CAC9C7; font-size: 13px;">Social Media</span>
+                <div style="display: inline-flex; gap: 15px; padding: 10px 25px; background: rgba(179, 173, 255, 0.1); border: 2px solid #53a5a5; border-radius: 8px;">
+                    <span style="color: #53a5a5; font-size: 13px; font-weight: 600;">📥 Feedback Sources:</span>
+                    <span style="color: #3e444d; font-size: 13px;">App Reviews</span>
+                    <span style="color: #85837e;">•</span>
+                    <span style="color: #3e444d; font-size: 13px;">Support Tickets</span>
+                    <span style="color: #85837e;">•</span>
+                    <span style="color: #3e444d; font-size: 13px;">Surveys/NPS</span>
+                    <span style="color: #85837e;">•</span>
+                    <span style="color: #3e444d; font-size: 13px;">Social Media</span>
                 </div>
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
                 <!-- P0: Discovery -->
-                <div style="background: rgba(145, 227, 234, 0.1); border: 2px solid #91E3EA; border-radius: 10px; padding: 15px;">
-                    <div style="color: #91E3EA; font-size: 18px; font-weight: 700; margin-bottom: 8px;">🎯 P0: Discovery</div>
-                    <div style="color: #F8F6F3; font-size: 14px; font-weight: 600; margin-bottom: 8px;">High Value</div>
-                    <div style="color: #CAC9C7; font-size: 13px; line-height: 1.4; margin-bottom: 8px;">
-                        <strong style="color: #91E3EA;">Goal:</strong> Identify high-value customer problems
+                <div style="background: rgba(145, 227, 234, 0.1); border: 2px solid #53a5a5; border-radius: 10px; padding: 15px;">
+                    <div style="color: #53a5a5; font-size: 18px; font-weight: 700; margin-bottom: 8px;">🎯 P0: Discovery</div>
+                    <div style="color: #1a1d21; font-size: 14px; font-weight: 600; margin-bottom: 8px;">High Value</div>
+                    <div style="color: #3e444d; font-size: 13px; line-height: 1.4; margin-bottom: 8px;">
+                        <strong style="color: #53a5a5;">Goal:</strong> Identify high-value customer problems
                     </div>
                     
                     <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 8px; margin-bottom: 6px;">
-                        <div style="color: #91E3EA; font-size: 12px; font-weight: 600; margin-bottom: 3px;">Path A: Pattern Analysis</div>
-                        <div style="color: #CAC9C7; font-size: 11px;">Enterpret - Deep synthesis & trends</div>
+                        <div style="color: #53a5a5; font-size: 12px; font-weight: 600; margin-bottom: 3px;">Path A: Pattern Analysis</div>
+                        <div style="color: #3e444d; font-size: 11px;">Enterpret - Deep synthesis & trends</div>
                     </div>
                     
                     <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 8px; margin-bottom: 8px;">
-                        <div style="color: #91E3EA; font-size: 12px; font-weight: 600; margin-bottom: 3px;">Path B: Manual Search</div>
-                        <div style="color: #CAC9C7; font-size: 11px;">Insights Tool - Real-time, exploratory</div>
+                        <div style="color: #53a5a5; font-size: 12px; font-weight: 600; margin-bottom: 3px;">Path B: Manual Search</div>
+                        <div style="color: #3e444d; font-size: 11px;">Insights Tool - Real-time, exploratory</div>
                     </div>
 
-                    <div style="color: #97D3CB; font-size: 12px; margin-bottom: 4px;">↓ Then:</div>
-                    <ul style="color: #CAC9C7; font-size: 11px; line-height: 1.3; margin: 0 0 8px 0; padding-left: 13px;">
+                    <div style="color: #53a5a5; font-size: 12px; margin-bottom: 4px;">↓ Then:</div>
+                    <ul style="color: #3e444d; font-size: 11px; line-height: 1.3; margin: 0 0 8px 0; padding-left: 13px;">
                         <li>Group into Loop (manual)</li>
                         <li>Create JIRA ticket (source of truth)</li>
                     </ul>
                     
                     <div style="margin-top: 8px; padding: 6px; background: rgba(255, 175, 1, 0.15); border-radius: 4px;">
-                        <div style="color: #FFAF01; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Close the Loop Team (CTL)</div>
-                        <div style="color: #CAC9C7; font-size: 10px; line-height: 1.3;">Searches patterns • Groups feedback • Creates JIRA • Notifies customers • Adding 20 UX researchers</div>
+                        <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Close the Loop Team (CTL)</div>
+                        <div style="color: #3e444d; font-size: 10px; line-height: 1.3;">Searches patterns • Groups feedback • Creates JIRA • Notifies customers • Adding UX researchers</div>
                     </div>
                 </div>
 
                 <!-- Loop Closing -->
-                <div style="background: rgba(255, 175, 1, 0.1); border: 2px solid #FFAF01; border-radius: 10px; padding: 15px;">
-                    <div style="color: #FFAF01; font-size: 18px; font-weight: 700; margin-bottom: 8px;">🚀 Loop Closing</div>
-                    <div style="color: #F8F6F3; font-size: 14px; font-weight: 600; margin-bottom: 8px;">Product Execution</div>
-                    <div style="color: #CAC9C7; font-size: 13px; line-height: 1.4; margin-bottom: 10px;">
-                        <strong style="color: #FFAF01;">Goal:</strong> Turn validated feedback into shipped features
+                <div style="background: rgba(255, 175, 1, 0.1); border: 2px solid #53a5a5; border-radius: 10px; padding: 15px;">
+                    <div style="color: #53a5a5; font-size: 18px; font-weight: 700; margin-bottom: 8px;">🚀 Loop Closing</div>
+                    <div style="color: #1a1d21; font-size: 14px; font-weight: 600; margin-bottom: 8px;">Product Execution</div>
+                    <div style="color: #3e444d; font-size: 13px; line-height: 1.4; margin-bottom: 10px;">
+                        <strong style="color: #53a5a5;">Goal:</strong> Turn validated feedback into shipped features
                     </div>
                     
-                    <div style="color: #FFAF01; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Process Steps:</div>
+                    <div style="color: #53a5a5; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Process Steps:</div>
                     <div style="display: flex; flex-direction: column; gap: 6px;">
                         <div style="background: rgba(255, 175, 1, 0.15); border-radius: 6px; padding: 6px;">
-                            <div style="color: #FFAF01; font-size: 12px; font-weight: 600;">1. Review Loops</div>
-                            <div style="color: #CAC9C7; font-size: 11px;">In planning cycles</div>
+                            <div style="color: #53a5a5; font-size: 12px; font-weight: 600;">1. Review Loops</div>
+                            <div style="color: #3e444d; font-size: 11px;">In planning cycles</div>
                         </div>
                         <div style="background: rgba(255, 175, 1, 0.15); border-radius: 6px; padding: 6px;">
-                            <div style="color: #FFAF01; font-size: 12px; font-weight: 600;">2. Build Feature</div>
-                            <div style="color: #CAC9C7; font-size: 11px;">Timeline: Weeks/Months</div>
+                            <div style="color: #53a5a5; font-size: 12px; font-weight: 600;">2. Build Feature</div>
+                            <div style="color: #3e444d; font-size: 11px;">Timeline: Weeks/Months</div>
                         </div>
                         <div style="background: rgba(255, 175, 1, 0.15); border-radius: 6px; padding: 6px;">
-                            <div style="color: #FFAF01; font-size: 12px; font-weight: 600;">3. Ship to Production</div>
-                            <div style="color: #CAC9C7; font-size: 11px;">Loop officially closes</div>
+                            <div style="color: #53a5a5; font-size: 12px; font-weight: 600;">3. Ship to Production</div>
+                            <div style="color: #3e444d; font-size: 11px;">Loop officially closes</div>
                         </div>
                     </div>
                     
                     <div style="margin-top: 8px; padding: 6px; background: rgba(253, 111, 114, 0.15); border-radius: 4px;">
-                        <div style="color: #FD6F72; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Product Teams</div>
-                        <div style="color: #CAC9C7; font-size: 10px; line-height: 1.3;">Review loops in planning • Build features • Ship features (closes loop)</div>
+                        <div style="color: #244e4d; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Product Teams</div>
+                        <div style="color: #3e444d; font-size: 10px; line-height: 1.3;">Review loops in planning • Build features • Ship features (closes loop)</div>
                     </div>
                 </div>
 
                 <!-- P1: Notification -->
-                <div style="background: rgba(151, 211, 203, 0.1); border: 2px solid #97D3CB; border-radius: 10px; padding: 15px;">
-                    <div style="color: #97D3CB; font-size: 18px; font-weight: 700; margin-bottom: 8px;">🔔 P1: Notification</div>
-                    <div style="color: #F8F6F3; font-size: 14px; font-weight: 600; margin-bottom: 8px;">Lower Priority (Optional)</div>
-                    <div style="color: #CAC9C7; font-size: 13px; line-height: 1.4; margin-bottom: 10px;">
-                        <strong style="color: #97D3CB;">Goal:</strong> Inform users feedback was addressed
+                <div style="background: rgba(151, 211, 203, 0.1); border: 2px solid #53a5a5; border-radius: 10px; padding: 15px;">
+                    <div style="color: #53a5a5; font-size: 18px; font-weight: 700; margin-bottom: 8px;">🔔 P1: Notification</div>
+                    <div style="color: #1a1d21; font-size: 14px; font-weight: 600; margin-bottom: 8px;">Lower Priority (Optional)</div>
+                    <div style="color: #3e444d; font-size: 13px; line-height: 1.4; margin-bottom: 10px;">
+                        <strong style="color: #53a5a5;">Goal:</strong> Inform users feedback was addressed
                     </div>
                     
-                    <div style="color: #97D3CB; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Process Steps:</div>
+                    <div style="color: #53a5a5; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Process Steps:</div>
                     <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px;">
                         <div style="background: rgba(151, 211, 203, 0.15); border-radius: 6px; padding: 6px;">
-                            <div style="color: #97D3CB; font-size: 12px; font-weight: 600;">1. Find Users</div>
-                            <div style="color: #CAC9C7; font-size: 11px;">Via Insights Tool (manual search)</div>
+                            <div style="color: #53a5a5; font-size: 12px; font-weight: 600;">1. Find Users</div>
+                            <div style="color: #3e444d; font-size: 11px;">Via Insights Tool (manual search)</div>
                         </div>
                         <div style="background: rgba(151, 211, 203, 0.15); border-radius: 6px; padding: 6px;">
-                            <div style="color: #97D3CB; font-size: 12px; font-weight: 600;">2. Send Emails</div>
-                            <div style="color: #CAC9C7; font-size: 11px;">Via Amazon SES</div>
+                            <div style="color: #53a5a5; font-size: 12px; font-weight: 600;">2. Send Emails</div>
+                            <div style="color: #3e444d; font-size: 11px;">Via email tool</div>
                         </div>
                         <div style="background: rgba(151, 211, 203, 0.15); border-radius: 6px; padding: 6px;">
-                            <div style="color: #97D3CB; font-size: 12px; font-weight: 600;">3. Track Metrics</div>
-                            <div style="color: #CAC9C7; font-size: 11px;">Loops closed, users notified</div>
+                            <div style="color: #53a5a5; font-size: 12px; font-weight: 600;">3. Track Metrics</div>
+                            <div style="color: #3e444d; font-size: 11px;">Loops closed, users notified</div>
                         </div>
                     </div>
                     
                     <div style="margin-top: 8px; padding: 6px; background: rgba(145, 227, 234, 0.15); border-radius: 4px;">
-                        <div style="color: #91E3EA; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Close the Loop Team (CTL)</div>
-                        <div style="color: #CAC9C7; font-size: 10px; line-height: 1.3;">Finds users • Sends notification emails • Tracks metrics</div>
+                        <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Close the Loop Team (CTL)</div>
+                        <div style="color: #3e444d; font-size: 10px; line-height: 1.3;">Finds users • Sends notification emails • Tracks metrics</div>
                     </div>
                 </div>
             </div>
 
             <!-- JIRA Importance Box -->
-            <div style="background: rgba(253, 111, 114, 0.1); border: 2px solid #FD6F72; border-radius: 8px; padding: 12px;">
+            <div style="background: rgba(253, 111, 114, 0.1); border: 2px solid #244e4d; border-radius: 8px; padding: 12px;">
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                    <div style="color: #FD6F72; font-size: 14px; font-weight: 700;">🎫 Why JIRA Is Critical with Enterpret</div>
+                    <div style="color: #244e4d; font-size: 14px; font-weight: 700;">🎫 Why JIRA Is Critical with Enterpret</div>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
                     <div>
-                        <div style="color: #FD6F72; font-size: 11px; font-weight: 600; margin-bottom: 4px;">Source of Truth</div>
-                        <div style="color: #CAC9C7; font-size: 10px; line-height: 1.4;">Single location for all feedback loops with complete context</div>
+                        <div style="color: #244e4d; font-size: 11px; font-weight: 600; margin-bottom: 4px;">Source of Truth</div>
+                        <div style="color: #3e444d; font-size: 10px; line-height: 1.4;">Single location for all feedback loops with complete context</div>
                     </div>
                     <div>
-                        <div style="color: #FD6F72; font-size: 11px; font-weight: 600; margin-bottom: 4px;">Contains</div>
-                        <div style="color: #CAC9C7; font-size: 10px; line-height: 1.4;">Insight • Data • Context • Filters • Static Enterpret links</div>
+                        <div style="color: #244e4d; font-size: 11px; font-weight: 600; margin-bottom: 4px;">Contains</div>
+                        <div style="color: #3e444d; font-size: 10px; line-height: 1.4;">Insight • Data • Context • Filters • Static Enterpret links</div>
                     </div>
                     <div>
-                        <div style="color: #FD6F72; font-size: 11px; font-weight: 600; margin-bottom: 4px;">Used By</div>
-                        <div style="color: #CAC9C7; font-size: 10px; line-height: 1.4;">Product teams (planning) • Leadership (prioritization)</div>
+                        <div style="color: #244e4d; font-size: 11px; font-weight: 600; margin-bottom: 4px;">Used By</div>
+                        <div style="color: #3e444d; font-size: 10px; line-height: 1.4;">Product teams (planning) • Leadership (prioritization)</div>
                     </div>
                 </div>
             </div>
@@ -1235,73 +1186,73 @@
             </div>
 
             <!-- Why This Matters - Moved to Top -->
-            <div style="background: rgba(179, 173, 255, 0.1); border-left: 4px solid #B3ADFF; border-radius: 8px; padding: 14px; margin-bottom: 15px;">
-                <div style="color: #B3ADFF; font-size: 14px; font-weight: 600; margin-bottom: 8px;">💡 Why This Matters for WooCommerce</div>
-                <div style="color: #CAC9C7; font-size: 12px; line-height: 1.6;">
-                    Product Councils create a <strong style="color: #FFAF01;">governance structure</strong> that ensures customer feedback from Enterpret directly influences product decisions. 
+            <div style="background: rgba(179, 173, 255, 0.1); border-left: 4px solid #53a5a5; border-radius: 8px; padding: 14px; margin-bottom: 15px;">
+                <div style="color: #53a5a5; font-size: 14px; font-weight: 600; margin-bottom: 8px;">💡 Why This Matters for WooCommerce</div>
+                <div style="color: #3e444d; font-size: 12px; line-height: 1.6;">
+                    Product Councils create a <strong style="color: #53a5a5;">governance structure</strong> that ensures customer feedback from Enterpret directly influences product decisions. 
                     By bringing together Product, Engineering, Design, and Customer Success bi-weekly, WooCommerce can systematically translate merchant feedback into roadmap priorities 
-                    aligned with your <strong style="color: #FFAF01;">Product Quality North Star</strong>. This structure prevents feedback from being siloed and ensures 
+                    aligned with your <strong style="color: #53a5a5;">Product Quality North Star</strong>. This structure prevents feedback from being siloed and ensures 
                     cross-functional buy-in before features are built.
                 </div>
             </div>
 
             <!-- Definition Box -->
-            <div style="background: rgba(179, 173, 255, 0.15); border: 2px solid #B3ADFF; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
-                <div style="color: #B3ADFF; font-size: 15px; font-weight: 700; margin-bottom: 8px;">📋 What Are Product Councils?</div>
-                <div style="color: #F8F6F3; font-size: 12px; line-height: 1.6; margin-bottom: 6px;">
+            <div style="background: rgba(179, 173, 255, 0.15); border: 2px solid #53a5a5; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
+                <div style="color: #53a5a5; font-size: 15px; font-weight: 700; margin-bottom: 8px;">📋 What Are Product Councils?</div>
+                <div style="color: #1a1d21; font-size: 12px; line-height: 1.6; margin-bottom: 6px;">
                     Structured, cross-functional forums designed to drive strategic product decisions through collaborative evaluation of customer feedback, internal insights, and business objectives.
                 </div>
-                <div style="color: #CAC9C7; font-size: 11px; line-height: 1.5;">
+                <div style="color: #3e444d; font-size: 11px; line-height: 1.5;">
                     Regularly scheduled meetings where representatives from Product, Engineering, Design, Customer Success, and other key teams evaluate customer feedback and translate it into actionable product decisions. Each product area has its own council.
                 </div>
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px;">
                 <!-- Cross-Functional Composition -->
-                <div style="background: rgba(145, 227, 234, 0.1); border: 2px solid #91E3EA; border-radius: 10px; padding: 18px;">
-                    <div style="color: #91E3EA; font-size: 16px; font-weight: 700; margin-bottom: 12px;">👥 Cross-Functional Composition</div>
-                    <div style="color: #CAC9C7; font-size: 12px; line-height: 1.5; margin-bottom: 12px;">
+                <div style="background: rgba(145, 227, 234, 0.1); border: 2px solid #53a5a5; border-radius: 10px; padding: 18px;">
+                    <div style="color: #53a5a5; font-size: 16px; font-weight: 700; margin-bottom: 12px;">👥 Cross-Functional Composition</div>
+                    <div style="color: #3e444d; font-size: 12px; line-height: 1.5; margin-bottom: 12px;">
                         Each council includes one representative from:
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
                         <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 10px;">
-                            <div style="color: #91E3EA; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Product Management</div>
-                            <div style="color: #CAC9C7; font-size: 10px;">Strategic direction & roadmap</div>
+                            <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Product Management</div>
+                            <div style="color: #3e444d; font-size: 10px;">Strategic direction & roadmap</div>
                         </div>
                         <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 10px;">
-                            <div style="color: #91E3EA; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Engineering</div>
-                            <div style="color: #CAC9C7; font-size: 10px;">Technical feasibility</div>
+                            <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Engineering</div>
+                            <div style="color: #3e444d; font-size: 10px;">Technical feasibility</div>
                         </div>
                         <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 10px;">
-                            <div style="color: #91E3EA; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Design</div>
-                            <div style="color: #CAC9C7; font-size: 10px;">User experience & interface</div>
+                            <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Design</div>
+                            <div style="color: #3e444d; font-size: 10px;">User experience & interface</div>
                         </div>
                         <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 10px;">
-                            <div style="color: #91E3EA; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Customer Advisory/Success</div>
-                            <div style="color: #CAC9C7; font-size: 10px;">Voice of customer</div>
+                            <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Customer Advisory/Success</div>
+                            <div style="color: #3e444d; font-size: 10px;">Voice of customer</div>
                         </div>
                         <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 10px;">
-                            <div style="color: #91E3EA; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Product Marketing</div>
-                            <div style="color: #CAC9C7; font-size: 10px;">Market positioning</div>
+                            <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Product Marketing</div>
+                            <div style="color: #3e444d; font-size: 10px;">Market positioning</div>
                         </div>
                         <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 10px;">
-                            <div style="color: #91E3EA; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Sales Engineering</div>
-                            <div style="color: #CAC9C7; font-size: 10px;">Field insights & demos</div>
+                            <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Sales Engineering</div>
+                            <div style="color: #3e444d; font-size: 10px;">Field insights & demos</div>
                         </div>
                     </div>
                     <div style="margin-top: 12px; padding: 10px; background: rgba(255, 175, 1, 0.1); border-radius: 6px;">
-                        <div style="color: #FFAF01; font-size: 11px; font-weight: 600; margin-bottom: 3px;">✓ Ensures Diverse Perspectives</div>
-                        <div style="color: #CAC9C7; font-size: 10px; line-height: 1.4;">While maintaining focused, accountable participation</div>
+                        <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">✓ Ensures Diverse Perspectives</div>
+                        <div style="color: #3e444d; font-size: 10px; line-height: 1.4;">While maintaining focused, accountable participation</div>
                     </div>
                 </div>
 
                 <!-- Meeting Cadence -->
-                <div style="background: rgba(255, 175, 1, 0.1); border: 2px solid #FFAF01; border-radius: 10px; padding: 18px;">
-                    <div style="color: #FFAF01; font-size: 16px; font-weight: 700; margin-bottom: 12px;">📅 Meeting Cadence</div>
+                <div style="background: rgba(255, 175, 1, 0.1); border: 2px solid #53a5a5; border-radius: 10px; padding: 18px;">
+                    <div style="color: #53a5a5; font-size: 16px; font-weight: 700; margin-bottom: 12px;">📅 Meeting Cadence</div>
                     
                     <div style="background: rgba(255, 175, 1, 0.15); border-radius: 8px; padding: 12px; margin-bottom: 10px;">
-                        <div style="color: #FFAF01; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Bi-Weekly Synchronous Meetings</div>
-                        <div style="color: #CAC9C7; font-size: 11px; line-height: 1.5;">
+                        <div style="color: #53a5a5; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Bi-Weekly Synchronous Meetings</div>
+                        <div style="color: #3e444d; font-size: 11px; line-height: 1.5;">
                             • Across all product areas<br>
                             • Consistent schedule builds routine<br>
                             • Maintains momentum on feedback review
@@ -1309,8 +1260,8 @@
                     </div>
 
                     <div style="background: rgba(255, 175, 1, 0.15); border-radius: 8px; padding: 12px; margin-bottom: 10px;">
-                        <div style="color: #FFAF01; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Aligned with Product Development</div>
-                        <div style="color: #CAC9C7; font-size: 11px; line-height: 1.5;">
+                        <div style="color: #53a5a5; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Aligned with Product Development</div>
+                        <div style="color: #3e444d; font-size: 11px; line-height: 1.5;">
                             • Synced with Product Development Lifecycle<br>
                             • Integrated into quarterly roadmap planning<br>
                             • Timing ensures feedback informs decisions
@@ -1318,8 +1269,8 @@
                     </div>
 
                     <div style="background: rgba(255, 175, 1, 0.15); border-radius: 8px; padding: 12px;">
-                        <div style="color: #FFAF01; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Special Sessions</div>
-                        <div style="color: #CAC9C7; font-size: 11px; line-height: 1.5;">
+                        <div style="color: #53a5a5; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Special Sessions</div>
+                        <div style="color: #3e444d; font-size: 11px; line-height: 1.5;">
                             • Feedback delivery sessions: 2x per quarter<br>
                             • Follow-up meetings as needed<br>
                             • Deep dives on critical feedback themes
@@ -1329,24 +1280,24 @@
             </div>
 
             <!-- Key Benefits -->
-            <div style="background: rgba(151, 211, 203, 0.1); border: 2px solid #97D3CB; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
-                <div style="color: #97D3CB; font-size: 16px; font-weight: 700; margin-bottom: 10px;">🎯 Key Benefits of Product Councils</div>
+            <div style="background: rgba(151, 211, 203, 0.1); border: 2px solid #53a5a5; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
+                <div style="color: #53a5a5; font-size: 16px; font-weight: 700; margin-bottom: 10px;">🎯 Key Benefits of Product Councils</div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px;">
                     <div>
-                        <div style="color: #97D3CB; font-size: 13px; font-weight: 600; margin-bottom: 4px;">Cross-Functional Alignment</div>
-                        <div style="color: #CAC9C7; font-size: 12px; line-height: 1.4;">Breaks down silos, ensures all perspectives heard</div>
+                        <div style="color: #53a5a5; font-size: 13px; font-weight: 600; margin-bottom: 4px;">Cross-Functional Alignment</div>
+                        <div style="color: #3e444d; font-size: 12px; line-height: 1.4;">Breaks down silos, ensures all perspectives heard</div>
                     </div>
                     <div>
-                        <div style="color: #97D3CB; font-size: 13px; font-weight: 600; margin-bottom: 4px;">Systematic Evaluation</div>
-                        <div style="color: #CAC9C7; font-size: 12px; line-height: 1.4;">Structured process for feedback review</div>
+                        <div style="color: #53a5a5; font-size: 13px; font-weight: 600; margin-bottom: 4px;">Systematic Evaluation</div>
+                        <div style="color: #3e444d; font-size: 12px; line-height: 1.4;">Structured process for feedback review</div>
                     </div>
                     <div>
-                        <div style="color: #97D3CB; font-size: 13px; font-weight: 600; margin-bottom: 4px;">Clear Accountability</div>
-                        <div style="color: #CAC9C7; font-size: 12px; line-height: 1.4;">Designated representatives own decisions</div>
+                        <div style="color: #53a5a5; font-size: 13px; font-weight: 600; margin-bottom: 4px;">Clear Accountability</div>
+                        <div style="color: #3e444d; font-size: 12px; line-height: 1.4;">Designated representatives own decisions</div>
                     </div>
                     <div>
-                        <div style="color: #97D3CB; font-size: 13px; font-weight: 600; margin-bottom: 4px;">Rapid Decision-Making</div>
-                        <div style="color: #CAC9C7; font-size: 12px; line-height: 1.4;">Regular cadence accelerates action</div>
+                        <div style="color: #53a5a5; font-size: 13px; font-weight: 600; margin-bottom: 4px;">Rapid Decision-Making</div>
+                        <div style="color: #3e444d; font-size: 12px; line-height: 1.4;">Regular cadence accelerates action</div>
                     </div>
                 </div>
             </div>
@@ -1515,33 +1466,33 @@
             </div>
             <div class="metrics-grid" style="gap: 20px; margin-bottom: 30px;">
                 <div class="metric-card" style="padding: 20px;">
-                    <div class="metric-value" style="color: #91E3EA; font-size: 42px;">2.5</div>
+                    <div class="metric-value" style="color: #53a5a5; font-size: 42px;">2.5</div>
                     <div class="metric-label" style="font-size: 13px;">Overall CI Maturity Score</div>
                     <div class="metric-target" style="font-size: 12px;">Target: 3.5 by Q3 2026</div>
                 </div>
 
                 <div class="metric-card" style="padding: 20px;">
-                    <div class="metric-value" style="color: #FFAF01; font-size: 42px;">50K+</div>
+                    <div class="metric-value" style="color: #53a5a5; font-size: 42px;">50K+</div>
                     <div class="metric-label" style="font-size: 13px;">Monthly Feedback Volume</div>
                     <div class="metric-target" style="font-size: 12px;">All sources integrated</div>
                 </div>
 
                 <div class="metric-card" style="padding: 20px;">
-                    <div class="metric-value" style="color: #FD6F72; font-size: 42px;">0%</div>
+                    <div class="metric-value" style="color: #244e4d; font-size: 42px;">0%</div>
                     <div class="metric-label" style="font-size: 13px;">Closed-Loop Response Rate</div>
                     <div class="metric-target" style="font-size: 12px;">Target: 80% by Q2 2026</div>
                 </div>
 
                 <div class="metric-card" style="padding: 20px;">
-                    <div class="metric-value" style="color: #97D3CB; font-size: 42px;">TBD</div>
+                    <div class="metric-value" style="color: #53a5a5; font-size: 42px;">TBD</div>
                     <div class="metric-label" style="font-size: 13px;">Product Quality Index</div>
                     <div class="metric-target" style="font-size: 12px;">Active bugs + Point releases</div>
                 </div>
             </div>
-            <div style="padding: 20px; background: rgba(145, 227, 234, 0.05); border-radius: 16px; border: 2px solid #244E4D;">
-                <div style="color: #97D3CB; font-size: 13px; margin-bottom: 8px;">2026 North Star Metric</div>
-                <div style="color: #FFAF01; font-size: 26px; font-weight: 700; margin-bottom: 6px;">Product Quality</div>
-                <div style="color: #CAC9C7; font-size: 14px;">
+            <div style="padding: 20px; background: rgba(145, 227, 234, 0.05); border-radius: 16px; border: 2px solid #244e4d;">
+                <div style="color: #53a5a5; font-size: 13px; margin-bottom: 8px;">2026 North Star Metric</div>
+                <div style="color: #53a5a5; font-size: 26px; font-weight: 700; margin-bottom: 6px;">Product Quality</div>
+                <div style="color: #3e444d; font-size: 14px;">
                     Reduce active bugs • Reduce point releases • Ensure workflow consistency
                 </div>
             </div>
@@ -1550,21 +1501,21 @@
         <!-- Slide 12: Next Steps -->
         <div class="slide title-slide">
             <h1 class="main-title">Next Steps</h1>
-            <div style="font-size: 24px; color: #CAC9C7; margin-bottom: 40px; max-width: 800px; line-height: 1.6;">
+            <div style="font-size: 24px; color: #3e444d; margin-bottom: 40px; max-width: 800px; line-height: 1.6;">
                 Your Customer Intelligence journey is accelerating. With Enterpret as your foundation and 
                 a clear roadmap ahead, WooCommerce is positioned to transform merchant feedback into 
                 systematic Product Quality improvements, JTBD excellence, and simplified experiences.
             </div>
             <div class="highlight-box" style="max-width: 900px;">
-                <div style="font-size: 18px; color: #91E3EA; margin-bottom: 15px; font-weight: 600;">Next Steps</div>
-                <div style="color: #CAC9C7; font-size: 15px; line-height: 1.6; text-align: left;">
-                    <p style="margin-bottom: 12px;">✓ <strong>Phase 1 - Foundation:</strong> Form CI Steering Committee and draft strategy aligned to 2026 North Star</p>
-                    <p style="margin-bottom: 12px;">✓ <strong>Phase 2 - Quick Wins:</strong> Run first Wisdom queries on Product Quality and launch pilot closed-loop process</p>
-                    <p style="margin-bottom: 12px;">✓ <strong>Phase 3 - Scale Insights:</strong> Build role-based dashboards and begin ROI modeling</p>
-                    <p style="margin-bottom: 12px;">✓ <strong>Phase 4 - Operationalize:</strong> Establish monthly CI review cadence and launch training program</p>
+                <div style="font-size: 18px; color: #53a5a5; margin-bottom: 15px; font-weight: 600;">Next Steps</div>
+                <div style="color: #ffffff; font-size: 15px; line-height: 1.6; text-align: left;">
+                    <p style="margin-bottom: 12px; color: #ffffff;">✓ <strong>Phase 1 - Foundation:</strong> Form CI Steering Committee and draft strategy aligned to 2026 North Star</p>
+                    <p style="margin-bottom: 12px; color: #ffffff;">✓ <strong>Phase 2 - Quick Wins:</strong> Run first Wisdom queries on Product Quality and launch pilot closed-loop process</p>
+                    <p style="margin-bottom: 12px; color: #ffffff;">✓ <strong>Phase 3 - Scale Insights:</strong> Build role-based dashboards and begin ROI modeling</p>
+                    <p style="margin-bottom: 12px; color: #ffffff;">✓ <strong>Phase 4 - Operationalize:</strong> Establish monthly CI review cadence and launch training program</p>
                 </div>
             </div>
-            <div style="margin-top: 40px; color: #B3ADFF; font-size: 13px;">
+            <div style="margin-top: 40px; color: #53a5a5; font-size: 13px;">
                 Assessment based on the Customer Intelligence Maturity Framework<br>
                 Powered by Enterpret Customer Intelligence Platform
             </div>
