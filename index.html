@@ -3,1731 +3,1034 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Experience & Customer Intelligence Roadmap Planning for 2026</title>
+    <title>Wisdom for Marketing Teams | Enterpret</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-
-        /* --- Simple password gate (client-side) --- */
-        #authGate {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(8px);
-            z-index: 999999;
-        }
-
-        #authCard {
-            width: min(420px, 92vw);
-            padding: 24px;
-            border-radius: 16px;
-            background: rgba(20, 22, 35, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        #authCard h2 { font-size: 18px; margin-bottom: 8px; color: #F8F6F3; }
-        #authCard p { opacity: 0.85; margin-bottom: 14px; font-size: 14px; color: #CAC9C7; line-height: 1.4; }
-
-        #authRow { display: flex; gap: 10px; }
-        #authInput {
-            flex: 1;
-            padding: 10px 12px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            background: rgba(0, 0, 0, 0.25);
-            color: #fff;
-            outline: none;
-        }
-        #authBtn {
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            background: rgba(255, 255, 255, 0.10);
-            color: #fff;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        #authBtn:hover { background: rgba(255, 255, 255, 0.16); }
-
-        #authErr { color: #ffb4b4; font-size: 13px; margin-top: 10px; min-height: 18px; }
-        /* --- End password gate --- */
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #ffffff;
-            color: #1a1d21;
-            overflow: hidden;
-            height: 100vh;
+        :root {
+            --woo-purple-10: #D1C1FF;
+            --woo-purple-40: #873EFF;
+            --woo-purple-50: #720EEC;
+            --woo-purple-70: #5007AA;
+            --woo-purple-90: #2C045D;
+            --white: #FFFFFF;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-700: #374151;
+            --gray-900: #111827;
         }
 
-        /* Slide Container */
-        .slides-container {
-            width: 100vw;
-            min-height: 100vh;
-            position: relative;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--woo-purple-90) 0%, var(--woo-purple-70) 100%);
+            color: var(--gray-900);
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           PASSWORD GATE (NEW)
+           ========================= */
+        .gate-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            padding-bottom: 100px;
+            justify-content: center;
+            padding: 24px;
+            background: radial-gradient(1200px 800px at 30% 20%, rgba(135, 62, 255, 0.25), rgba(44, 4, 93, 0.95));
+            backdrop-filter: blur(8px);
+        }
+
+        .gate-card {
+            width: min(520px, 100%);
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(209, 193, 255, 0.6);
+            border-radius: 20px;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+        }
+
+        .gate-topbar {
+            height: 6px;
+            background: linear-gradient(90deg, var(--woo-purple-40), var(--woo-purple-50));
+        }
+
+        .gate-body {
+            padding: 28px;
+        }
+
+        .gate-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--woo-purple-90);
+            margin-bottom: 6px;
+        }
+
+        .gate-subtitle {
+            color: var(--gray-700);
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .gate-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .gate-input {
+            width: 100%;
+            padding: 14px 14px;
+            border-radius: 12px;
+            border: 2px solid var(--gray-200);
+            outline: none;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            background: var(--white);
+        }
+
+        .gate-input:focus {
+            border-color: var(--woo-purple-40);
+            box-shadow: 0 0 0 4px rgba(135, 62, 255, 0.18);
+        }
+
+        .gate-button {
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--woo-purple-40), var(--woo-purple-50));
+            box-shadow: 0 10px 18px rgba(114, 14, 236, 0.25);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .gate-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(114, 14, 236, 0.30);
+        }
+
+        .gate-error {
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(239, 68, 68, 0.10);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            color: #991B1B;
+            font-weight: 600;
+            display: none;
+        }
+
+        .gate-hint {
+            margin-top: 14px;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Hide content until unlocked */
+        body.locked {
+            overflow: hidden;
+        }
+        .protected-content {
+            display: none;
+        }
+        body.unlocked .protected-content {
+            display: block;
+        }
+        body.unlocked .gate-overlay {
+            display: none;
+        }
+
+        /* =========================
+           EXISTING STYLES (UNCHANGED)
+           ========================= */
+        .presentation-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
         .slide {
-            display: none;
-            width: 100vw;
-            max-height: calc(100vh - 100px);
-            min-height: calc(100vh - 100px);
-            padding: 40px 60px;
-            overflow-y: auto;
-            overflow-x: hidden;
-            animation: slideIn 0.5s ease;
-            box-sizing: border-box;
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(44, 4, 93, 0.3);
+            padding: 60px 80px;
+            margin-bottom: 40px;
             position: relative;
-        }
-
-        /* Scroll indicator for long slides */
-        .slide::after {
-            content: '';
-            position: sticky;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40px;
-            background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, transparent 100%);
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .slide.has-scroll::after {
-            opacity: 1;
-        }
-
-        /* Custom scrollbar styling */
-        .slide::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        .slide::-webkit-scrollbar-track {
-            background: rgba(95, 93, 90, 0.2);
-            border-radius: 10px;
-        }
-
-        .slide::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #53a5a5 0%, #53a5a5 100%);
-            border-radius: 10px;
-        }
-
-        .slide::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #53a5a5 0%, #53a5a5 100%);
-        }
-
-        .slide.active {
-            display: block;
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
         }
 
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Navigation */
-        .navigation {
-            position: relative;
-            margin: 20px auto 0;
-            display: flex;
-            gap: 15px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px 30px;
-            border-radius: 50px;
-            border: 2px solid #244e4d;
-            width: fit-content;
-        }
-
-        .nav-button {
-            background: linear-gradient(135deg, #244e4d 0%, #0D3F43 100%);
-            color: #53a5a5;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-button:hover {
-            background: linear-gradient(135deg, #0D3F43 0%, #244e4d 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-button:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        .slide-counter {
-            color: #53a5a5;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 0 20px;
-        }
-
-        .dot-indicators {
-            display: flex;
-            gap: 8px;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #3E444D;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            background: #53a5a5;
-            width: 24px;
-            border-radius: 4px;
-        }
-
-        /* Slide Headers */
-        .slide-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .slide-title {
-            font-size: 36px;
-            font-weight: 700;
-            color: #53a5a5;
-            margin-bottom: 10px;
-        }
-
-        .slide-subtitle {
-            font-size: 16px;
-            color: #3e444d;
-        }
-
-        /* Title Slide */
-        .title-slide {
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        
-        .slide.active.title-slide {
-            display: flex;
-        }
-
-        .main-title {
-            font-size: 48px;
-            font-weight: 700;
-            color: #53a5a5;
-            margin-bottom: 20px;
-        }
-
-        .company-name {
-            font-size: 42px;
-            color: #53a5a5;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .subtitle {
-            font-size: 18px;
-            color: #3e444d;
-            margin-bottom: 40px;
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, #244e4d 0%, #0D3F43 100%);
-            border: 2px solid #53a5a5;
-            border-radius: 20px;
-            padding: 30px;
-            margin-top: 30px;
-            max-width: 800px;
-        }
-
-        /* Stage Display Slide */
-        .stage-display {
-            text-align: center;
-        }
-
-        .stage-number-large {
-            font-size: 120px;
-            font-weight: 700;
-            color: #53a5a5;
-            line-height: 1;
-            margin: 20px 0;
-        }
-
-        .stage-name-large {
-            font-size: 42px;
-            font-weight: 700;
-            color: #1a1d21;
-            margin-bottom: 20px;
-        }
-
-        .stage-description {
-            font-size: 18px;
-            color: #3e444d;
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* Maturity Path Slide */
-        .maturity-path-visual {
-            position: relative;
-            margin: 40px 0 30px 0;
-            padding: 20px 0;
-        }
-
-        .path-line {
-            position: absolute;
-            top: 50px;
-            left: 5%;
-            right: 5%;
-            height: 4px;
-            background: linear-gradient(90deg, #0454E8 0%, #1000EC 25%, #53a5a5 50%, #244e4d 75%, #53a5a5 100%);
-            z-index: 1;
-        }
-
-        .stages-row {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            z-index: 2;
-            padding: 0 5%;
-        }
-
-        .stage-item {
-            flex: 1;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .stage-labels-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0 5%;
-            margin-top: 30px;
-        }
-
-        .stage-label-item {
-            flex: 1;
-            text-align: center;
-            padding: 0 12px;
-        }
-
-        .stage-dot {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 24px;
-            transition: all 0.3s ease;
-            border: 3px solid transparent;
-        }
-    
-    .stage-item:nth-child(1) .stage-dot { background: #e8f4f4; border-color: #e8f4f4; color: #1a1d21; }
-    .stage-item:nth-child(2) .stage-dot { background: #b3d9d9; border-color: #b3d9d9; color: #1a1d21; }
-    .stage-item:nth-child(3) .stage-dot { background: #80bfbf; border-color: #80bfbf; color: #ffffff; }
-    .stage-item:nth-child(4) .stage-dot { background: #53a5a5; border-color: #53a5a5; color: #ffffff; }
-    .stage-item:nth-child(5) .stage-dot { background: #244e4d; border-color: #244e4d; color: #ffffff; }
-    .stage-item.current .stage-dot { background: #53a5a5 !important; border-color: #53a5a5 !important; color: #ffffff !important; transform: scale(1.3); }
-
-        .stage-item.stage-1 .stage-dot { background: #0454E8; color: #1a1d21; }
-    
-    .stage-item:nth-child(1) .stage-dot { background: #e8f4f4; border-color: #e8f4f4; color: #1a1d21; }
-    .stage-item:nth-child(2) .stage-dot { background: #b3d9d9; border-color: #b3d9d9; color: #1a1d21; }
-    .stage-item:nth-child(3) .stage-dot { background: #80bfbf; border-color: #80bfbf; color: #ffffff; }
-    .stage-item:nth-child(4) .stage-dot { background: #53a5a5; border-color: #53a5a5; color: #ffffff; }
-    .stage-item:nth-child(5) .stage-dot { background: #244e4d; border-color: #244e4d; color: #ffffff; }
-    .stage-item.current .stage-dot { background: #53a5a5 !important; border-color: #53a5a5 !important; color: #ffffff !important; transform: scale(1.3); }
-        .stage-item.stage-2 .stage-dot { background: #1000EC; color: #1a1d21; }
-    
-    .stage-item:nth-child(1) .stage-dot { background: #e8f4f4; border-color: #e8f4f4; color: #1a1d21; }
-    .stage-item:nth-child(2) .stage-dot { background: #b3d9d9; border-color: #b3d9d9; color: #1a1d21; }
-    .stage-item:nth-child(3) .stage-dot { background: #80bfbf; border-color: #80bfbf; color: #ffffff; }
-    .stage-item:nth-child(4) .stage-dot { background: #53a5a5; border-color: #53a5a5; color: #ffffff; }
-    .stage-item:nth-child(5) .stage-dot { background: #244e4d; border-color: #244e4d; color: #ffffff; }
-    .stage-item.current .stage-dot { background: #53a5a5 !important; border-color: #53a5a5 !important; color: #ffffff !important; transform: scale(1.3); }
-        .stage-item.stage-3 .stage-dot { background: #53a5a5; color: #ffffff; }
-    
-    .stage-item:nth-child(1) .stage-dot { background: #e8f4f4; border-color: #e8f4f4; color: #1a1d21; }
-    .stage-item:nth-child(2) .stage-dot { background: #b3d9d9; border-color: #b3d9d9; color: #1a1d21; }
-    .stage-item:nth-child(3) .stage-dot { background: #80bfbf; border-color: #80bfbf; color: #ffffff; }
-    .stage-item:nth-child(4) .stage-dot { background: #53a5a5; border-color: #53a5a5; color: #ffffff; }
-    .stage-item:nth-child(5) .stage-dot { background: #244e4d; border-color: #244e4d; color: #ffffff; }
-    .stage-item.current .stage-dot { background: #53a5a5 !important; border-color: #53a5a5 !important; color: #ffffff !important; transform: scale(1.3); }
-        .stage-item.stage-4 .stage-dot { background: #244e4d; color: #1a1d21; }
-    
-    .stage-item:nth-child(1) .stage-dot { background: #e8f4f4; border-color: #e8f4f4; color: #1a1d21; }
-    .stage-item:nth-child(2) .stage-dot { background: #b3d9d9; border-color: #b3d9d9; color: #1a1d21; }
-    .stage-item:nth-child(3) .stage-dot { background: #80bfbf; border-color: #80bfbf; color: #ffffff; }
-    .stage-item:nth-child(4) .stage-dot { background: #53a5a5; border-color: #53a5a5; color: #ffffff; }
-    .stage-item:nth-child(5) .stage-dot { background: #244e4d; border-color: #244e4d; color: #ffffff; }
-    .stage-item.current .stage-dot { background: #53a5a5 !important; border-color: #53a5a5 !important; color: #ffffff !important; transform: scale(1.3); }
-        .stage-item.stage-5 .stage-dot { background: #53a5a5; color: #ffffff; }
-    
-    .stage-item:nth-child(1) .stage-dot { background: #e8f4f4; border-color: #e8f4f4; color: #1a1d21; }
-    .stage-item:nth-child(2) .stage-dot { background: #b3d9d9; border-color: #b3d9d9; color: #1a1d21; }
-    .stage-item:nth-child(3) .stage-dot { background: #80bfbf; border-color: #80bfbf; color: #ffffff; }
-    .stage-item:nth-child(4) .stage-dot { background: #53a5a5; border-color: #53a5a5; color: #ffffff; }
-    .stage-item:nth-child(5) .stage-dot { background: #244e4d; border-color: #244e4d; color: #ffffff; }
-    .stage-item.current .stage-dot { background: #53a5a5 !important; border-color: #53a5a5 !important; color: #ffffff !important; transform: scale(1.3); }
-
-        .stage-item.current .stage-dot {
-        border-color: #53a5a5;
-        background: #53a5a5;
-        color: #ffffff;
-        transform: scale(1.2);
-    }
-    
-    .stage-item:nth-child(1) .stage-dot { background: #e8f4f4; border-color: #e8f4f4; color: #1a1d21; }
-    .stage-item:nth-child(2) .stage-dot { background: #b3d9d9; border-color: #b3d9d9; color: #1a1d21; }
-    .stage-item:nth-child(3) .stage-dot { background: #80bfbf; border-color: #80bfbf; color: #ffffff; }
-    .stage-item:nth-child(4) .stage-dot { background: #53a5a5; border-color: #53a5a5; color: #ffffff; }
-    .stage-item:nth-child(5) .stage-dot { background: #244e4d; border-color: #244e4d; color: #ffffff; }
-    .stage-item.current .stage-dot { background: #53a5a5 !important; border-color: #53a5a5 !important; color: #ffffff !important; transform: scale(1.3); }
-
-        .stage-label {
-            font-size: 18px;
-            font-weight: 600;
-            color: #3e444d;
-            margin-bottom: 8px;
-            white-space: nowrap;
-        }
-
-        .stage-item.current .stage-label {
-            color: #53a5a5;
-        }
-
-        .stage-desc {
-            font-size: 14px;
-            color: #B7B7B7;
-            line-height: 1.4;
-        }
-
-        /* Challenge Boxes */
-        .challenge-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .challenge-box {
-            background: rgba(253, 111, 114, 0.1);
-            border-left: 4px solid #244e4d;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        .challenge-box h3 {
-            color: #244e4d;
-            font-size: 16px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .challenge-box p {
-            color: #3e444d;
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-
-        .action-box {
-            background: rgba(145, 227, 234, 0.1);
-            border-left: 4px solid #53a5a5;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        .action-box h3 {
-            color: #53a5a5;
-            font-size: 16px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .action-box p {
-            color: #3e444d;
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-
-        .action-box ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .action-box li {
-            color: #3e444d;
-            font-size: 13px;
-            padding: 6px 0;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .action-box li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #53a5a5;
-            font-weight: 700;
-        }
-
-        /* Competencies Grid */
-        .competencies-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-
-        .competency-card {
-            background: #ffffff;
-            border: 2px solid;
-            border-radius: 12px;
-            padding: 20px;
-            border-left: 5px solid;
-            transition: all 0.3s ease;
-        }
-
-        .competency-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(145, 227, 234, 0.2);
-        }
-
-        .competency-card.lead { border-color: #53a5a5; }
-        .competency-card.realize { border-color: #1000EC; }
-        .competency-card.activate { border-color: #53a5a5; }
-        .competency-card.enlighten { border-color: #0454E8; }
-        .competency-card.respond { border-color: #244e4d; }
-        .competency-card.disrupt { border-color: #CF91A2; }
-
-        .competency-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .competency-name {
-            font-size: 20px;
-            font-weight: 700;
-            color: #53a5a5;
-        }
-
-        .competency-score {
-            font-size: 28px;
-            font-weight: 700;
-            padding: 5px 12px;
-            border-radius: 8px;
-            background: rgba(145, 227, 234, 0.1);
-        }
-
-        .score-weak { color: #244e4d; }
-        .score-adequate { color: #53a5a5; }
-        .score-strong { color: #53a5a5; }
-
-        .competency-description {
-            font-size: 13px;
-            color: #1a1d21;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-
-        .progress-bar {
-            height: 6px;
-            background: rgba(145, 227, 234, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
-            margin-bottom: 12px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            transition: width 1s ease;
-            border-radius: 3px;
-        }
-
-        .lead .progress-fill { background: linear-gradient(90deg, #53a5a5 0%, #53a5a5 100%); }
-        .realize .progress-fill { background: linear-gradient(90deg, #1000EC 0%, #53a5a5 100%); }
-        .activate .progress-fill { background: linear-gradient(90deg, #53a5a5 0%, #FFDE95 100%); }
-        .enlighten .progress-fill { background: linear-gradient(90deg, #0454E8 0%, #8CB4FF 100%); }
-        .respond .progress-fill { background: linear-gradient(90deg, #244e4d 0%, #FD9799 100%); }
-        .disrupt .progress-fill { background: linear-gradient(90deg, #CF91A2 0%, #EDD4DB 100%); }
-
-        .skills-list {
-            font-size: 12px;
-            color: #3e444d;
-            list-style: none;
-        }
-
-        .skills-list li {
-            margin-bottom: 6px;
-            padding-left: 18px;
-            position: relative;
-        }
-
-        .skills-list li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #53a5a5;
-        }
-
-        /* Recommendations Slide */
-        .recommendations-list {
-            max-height: 70vh;
-            overflow-y: auto;
-            padding-right: 20px;
-        }
-
-        .recommendation-item {
-            background: rgba(145, 227, 234, 0.05);
-            border-left: 4px solid #53a5a5;
-            padding: 18px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-        }
-
-        .recommendation-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .recommendation-item h3 {
-            color: #53a5a5;
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
-
-        .recommendation-item p {
-            color: #3e444d;
-            line-height: 1.5;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .priority-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .priority-critical { background: #FC2125; color: #1a1d21; }
-        .priority-high { background: #53a5a5; color: #ffffff; }
-        .priority-medium { background: #0454E8; color: #ffffff; }
-
-        /* Timeline Slide */
-        .timeline-container {
-            max-height: 70vh;
-            overflow-y: auto;
-            padding-right: 20px;
-        }
-
-        .timeline-item {
-            padding-left: 50px;
-            margin-bottom: 35px;
-            position: relative;
-        }
-
-        .timeline-dot-indicator {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #53a5a5;
-            border: 4px solid #ffffff;
-        }
-
-        .timeline-item:before {
+        .slide::before {
             content: '';
             position: absolute;
-            left: 15px;
-            top: 30px;
-            bottom: -35px;
-            width: 2px;
-            background: rgba(145, 227, 234, 0.3);
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--woo-purple-40), var(--woo-purple-50));
         }
 
-        .timeline-item:last-child:before {
-            display: none;
+        h1, h2, h3 { font-family: 'Inter', sans-serif; font-weight: 700; }
+
+        h1 { font-size: 3.5rem; color: var(--woo-purple-90); margin-bottom: 1.5rem; line-height: 1.2; }
+        h2 { font-size: 2.5rem; color: var(--woo-purple-90); margin-bottom: 1.5rem; }
+        h3 { font-size: 1.5rem; color: var(--woo-purple-70); margin-bottom: 1rem; }
+
+        p { font-size: 1.1rem; line-height: 1.8; color: var(--gray-700); margin-bottom: 1.5rem; }
+
+        .subtitle { font-size: 1.5rem; color: var(--woo-purple-50); font-weight: 500; margin-bottom: 2rem; }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
         }
 
-        .timeline-phase {
-            font-size: 13px;
-            color: #53a5a5;
+        .feature-card {
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(114, 14, 236, 0.2);
+            border-color: var(--woo-purple-40);
+        }
+
+        .feature-icon {
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, var(--woo-purple-40), var(--woo-purple-50));
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .workflow-step {
+            background: var(--white);
+            border-left: 4px solid var(--woo-purple-40);
+            padding: 25px 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .workflow-step:hover { background: var(--gray-50); transform: translateX(8px); }
+
+        .step-number {
+            display: inline-block;
+            width: 40px; height: 40px;
+            background: var(--woo-purple-40);
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .example-query {
+            background: var(--woo-purple-10);
+            border-left: 4px solid var(--woo-purple-50);
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Inter', monospace;
+            font-size: 1rem;
+            color: var(--woo-purple-90);
+        }
+
+        .conversation-demo { background: var(--gray-50); border-radius: 16px; padding: 30px; margin: 30px 0; }
+
+        .chat-message {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .chat-message.user {
+            background: linear-gradient(135deg, var(--woo-purple-40), var(--woo-purple-50));
+            color: var(--white);
+            margin-left: 40px;
+        }
+
+        .chat-message.wisdom { background: var(--white); border: 2px solid var(--woo-purple-10); margin-right: 40px; }
+
+        .chat-label {
+            font-weight: 700;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            opacity: 0.8;
         }
 
-        .timeline-title {
-            font-size: 20px;
-            color: #1a1d21;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
+        .benefit-list { list-style: none; margin: 30px 0; }
 
-        .timeline-actions {
-            list-style: none;
-        }
-
-        .timeline-actions li {
-            color: #3e444d;
-            padding: 6px 0;
-            padding-left: 22px;
+        .benefit-list li {
+            padding: 20px;
+            background: var(--gray-50);
+            border-radius: 12px;
+            margin-bottom: 15px;
             position: relative;
-            font-size: 14px;
+            padding-left: 60px;
+            transition: all 0.3s ease;
         }
 
-        .timeline-actions li:before {
-            content: "✓";
+        .benefit-list li:hover { background: var(--woo-purple-10); transform: translateX(8px); }
+
+        .benefit-list li::before {
+            content: '✓';
             position: absolute;
-            left: 0;
-            color: #53a5a5;
+            left: 20px; top: 50%;
+            transform: translateY(-50%);
+            width: 30px; height: 30px;
+            background: var(--woo-purple-40);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 700;
         }
 
-        /* Metrics Slide */
-        .metrics-grid {
+        .cta-section {
+            background: linear-gradient(135deg, var(--woo-purple-50), var(--woo-purple-40));
+            color: var(--white);
+            text-align: center;
+            padding: 60px;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--woo-purple-50);
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); }
+
+        .phase-container { margin: 40px 0; }
+
+        .phase-header {
+            background: linear-gradient(135deg, var(--woo-purple-90), var(--woo-purple-70));
+            color: var(--white);
+            padding: 25px 35px;
+            border-radius: 12px 12px 0 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .phase-content {
+            background: var(--gray-50);
+            padding: 35px;
+            border-radius: 0 0 12px 12px;
+            border: 2px solid var(--gray-200);
+            border-top: none;
+        }
+
+        .metric-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
         }
 
         .metric-card {
-            background: rgba(145, 227, 234, 0.1);
-            padding: 30px;
-            border-radius: 16px;
+            background: var(--white);
+            border: 2px solid var(--woo-purple-40);
+            border-radius: 12px;
+            padding: 25px;
             text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .metric-card:hover {
-            transform: translateY(-5px);
-            background: rgba(145, 227, 234, 0.15);
         }
 
         .metric-value {
-            font-size: 56px;
+            font-size: 2.5rem;
             font-weight: 700;
+            color: var(--woo-purple-50);
             margin-bottom: 10px;
         }
 
-        .metric-label {
-            color: #3e444d;
-            font-size: 16px;
-            margin-bottom: 8px;
+        .metric-label { font-size: 0.9rem; color: var(--gray-700); font-weight: 600; }
+
+        .comparison-table {
+            width: 100%;
+            margin: 30px 0;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .metric-target {
-            color: #53a5a5;
-            font-size: 13px;
+        .comparison-table th {
+            background: var(--woo-purple-90);
+            color: var(--white);
+            padding: 20px;
+            text-align: left;
+            font-weight: 700;
         }
 
-        /* Scrollbar Styling */
-        ::-webkit-scrollbar {
-            width: 8px;
+        .comparison-table td {
+            padding: 20px;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
         }
 
-        ::-webkit-scrollbar-track {
-            background: rgba(145, 227, 234, 0.1);
-            border-radius: 4px;
+        .comparison-table tr:last-child td { border-bottom: none; }
+        .comparison-table tr:hover td { background: var(--gray-50); }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--woo-purple-10), #E9D5FF);
+            border-left: 6px solid var(--woo-purple-50);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: #244e4d;
-            border-radius: 4px;
-        }
+        .highlight-box h3 { margin-top: 0; }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0D3F43;
-        }
-
-        /* Keyboard Hint */
-        .keyboard-hint {
+        .nav-dots {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(12, 14, 28, 0.8);
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 12px;
-            color: #53a5a5;
-            border: 1px solid #244e4d;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
         }
 
-        @media (max-width: 1280px) {
-            .slide {
-                padding: 30px 40px;
-            }
-            .main-title {
-                font-size: 38px;
-            }
-            .competencies-grid {
-                grid-template-columns: 1fr;
-            }
-            .metrics-grid {
-                grid-template-columns: 1fr;
-            }
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--woo-purple-10);
+            border-radius: 50%;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot:hover, .nav-dot.active { background: var(--woo-purple-50); transform: scale(1.3); }
+
+        @media (max-width: 768px) {
+            .slide { padding: 40px 30px; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .chat-message.user, .chat-message.wisdom { margin-left: 0; margin-right: 0; }
+            .nav-dots { display: none; }
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            color: var(--gray-200);
+            font-size: 0.9rem;
+            font-weight: 600;
         }
     </style>
 </head>
-<body>
 
-    <!-- Password Gate -->
-    <div id="authGate">
-        <div id="authCard">
-            <h2>Enter password</h2>
-            <p>This page is protected.</p>
+<body class="locked">
+    <!-- PASSWORD GATE (NEW) -->
+    <div class="gate-overlay" id="gateOverlay" aria-label="Password gate">
+        <div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+            <div class="gate-topbar"></div>
+            <div class="gate-body">
+                <div class="gate-title" id="gateTitle">🔒 Protected page</div>
+                <div class="gate-subtitle">Enter the password to view this presentation.</div>
 
-            <div id="authRow">
-                <input id="authInput" type="password" placeholder="Password" autocomplete="current-password" />
-                <button id="authBtn" type="button">Unlock</button>
+                <div class="gate-row">
+                    <input
+                        id="passwordInput"
+                        class="gate-input"
+                        type="password"
+                        placeholder="Password"
+                        autocomplete="current-password"
+                        aria-label="Password"
+                    />
+                    <button id="unlockBtn" class="gate-button">Unlock</button>
+                </div>
+
+                <div class="gate-error" id="gateError">Incorrect password. Try again.</div>
+                <div class="gate-hint">Tip: press <strong>Enter</strong> to submit.</div>
             </div>
-
-            <div id="authErr"></div>
         </div>
     </div>
 
-    <script>
-        const PASSWORD = "Wooinsights2026!";
+    <!-- WRAP YOUR EXISTING PAGE CONTENT (NEW) -->
+    <div class="protected-content" id="protectedContent">
+        <div class="presentation-container">
 
-        const gate = document.getElementById("authGate");
-        const input = document.getElementById("authInput");
-        const btn = document.getElementById("authBtn");
-        const err = document.getElementById("authErr");
+            <!-- Slide 1: Title -->
+            <div class="slide" id="slide-1">
+                <h1>🎯 Wisdom for Marketing Teams</h1>
+                <p class="subtitle">Turn Customer Voice into Marketing Gold in 30 Seconds</p>
+                <p style="font-size: 1.3rem; line-height: 2; margin-top: 2rem;">Stop guessing what your customers want. Start having conversations with your entire voice-of-customer dataset.</p>
 
-        function unlock() {
-            if (input.value === PASSWORD) {
-                sessionStorage.setItem("authed", "true");
-                gate.style.display = "none";
-                err.textContent = "";
-            } else {
-                err.textContent = "Incorrect password.";
-                input.value = "";
-                input.focus();
-            }
-        }
-
-        if (sessionStorage.getItem("authed") === "true") {
-            gate.style.display = "none";
-        } else {
-            setTimeout(() => input.focus(), 0);
-        }
-
-        btn.addEventListener("click", unlock);
-        input.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") unlock();
-        });
-    </script>
-    <!-- End Password Gate -->
-
-
-    <div class="slides-container">
-        <!-- Slide 1: Title -->
-        <div class="slide active title-slide">
-            <h1 class="main-title">Product Experience &<br>Customer Intelligence<br>Roadmap Planning for 2026</h1>
-            <div class="company-name">WooCommerce / Automattic</div>
-            <p class="subtitle">December 2025 | 2026 Roadmap Planning Session</p>
-            <div class="highlight-box">
-                <div style="font-size: 18px; color: #53a5a5; margin-bottom: 10px; font-weight: 600;">Current Status</div>
-                <div style="font-size: 16px; color: #ffffff; line-height: 1.6;">
-                    Transitioning from <strong style="color: #ffffff;">Stage 2 (Initiate)</strong> to <strong style="color: #ffffff;">Stage 3 (Mobilize)</strong>
-                    <br><br>
-                    Building systematic Customer Intelligence capabilities with Enterpret to drive Product Quality, 
-                    JTBD excellence, Hosting & AI Adoption, and WooCommerce Simplicity.
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 2: Current Stage -->
-        <div class="slide stage-display">
-            <div class="slide-header">
-                <h2 class="slide-title">Your Current Maturity Stage</h2>
-                <p class="slide-subtitle">Where WooCommerce stands today</p>
-            </div>
-            <div class="stage-number-large">2-3</div>
-            <div class="stage-name-large">Transitioning: INITIATE → MOBILIZE</div>
-            <div class="stage-description">
-                WooCommerce is actively moving from Stage 2 (Initiate) to Stage 3 (Mobilize). You've established 
-                dedicated Customer Intelligence focus with Enterpret implementation, defined North Star metrics (Product Quality: 
-                reducing bugs & point releases, ensuring workflow consistency), and are building comprehensive feedback collection. 
-                <br><br>
-                Your next phase involves distributing insights across the organization and driving systematic experience 
-                improvements through closed-loop processes aligned with JTBD, Hosting & AI Adoption, and WooCommerce Simplicity goals.
-            </div>
-        </div>
-
-        <!-- Slide 3: Maturity Path -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2 class="slide-title">The Five Stages of Customer Intelligence Maturity</h2>
-                <p class="slide-subtitle">Your journey from investigation to embedded excellence</p>
-            </div>
-            <div class="maturity-path-visual">
-                <div class="path-line"></div>
-                <div class="stages-row">
-                    <div class="stage-item stage-1">
-                        <div class="stage-dot">1</div>
+                <div class="metric-grid" style="margin-top: 50px;">
+                    <div class="metric-card">
+                        <div class="metric-value">30s</div>
+                        <div class="metric-label">Answer Time</div>
                     </div>
-                    <div class="stage-item stage-2 current">
-                        <div class="stage-dot">2</div>
+                    <div class="metric-card">
+                        <div class="metric-value">0</div>
+                        <div class="metric-label">Wait for Reports</div>
                     </div>
-                    <div class="stage-item stage-3">
-                        <div class="stage-dot">3</div>
-                    </div>
-                    <div class="stage-item stage-4">
-                        <div class="stage-dot">4</div>
-                    </div>
-                    <div class="stage-item stage-5">
-                        <div class="stage-dot">5</div>
+                    <div class="metric-card">
+                        <div class="metric-value">100%</div>
+                        <div class="metric-label">Real Customer Voice</div>
                     </div>
                 </div>
+                <span class="slide-number">1</span>
             </div>
-            <div class="stage-labels-row">
-                <div class="stage-label-item">
-                    <div class="stage-label">Investigate</div>
-                    <div class="stage-desc">Not yet focused on CI as strategic opportunity</div>
-                </div>
-                <div class="stage-label-item">
-                    <div class="stage-label" style="color: #53a5a5;">Initiate</div>
-                    <div class="stage-desc">Kicking off isolated pockets of CI activities</div>
-                </div>
-                <div class="stage-label-item">
-                    <div class="stage-label">Mobilize</div>
-                    <div class="stage-desc">Full-time staff distribute insights and drive improvements</div>
-                </div>
-                <div class="stage-label-item">
-                    <div class="stage-label">Scale</div>
-                    <div class="stage-desc">Systematically using insights across the organization</div>
-                </div>
-                <div class="stage-label-item">
-                    <div class="stage-label">Embed</div>
-                    <div class="stage-desc">CI skills ingrained, able to rapidly adapt to market shifts</div>
-                </div>
-            </div>
-            <div style="margin-top: 50px; text-align: center;">
-                <div style="background: rgba(145, 227, 234, 0.1); display: inline-block; padding: 25px 50px; border-radius: 12px; border: 2px solid #244e4d;">
-                    <div style="color: #53a5a5; font-size: 16px; margin-bottom: 10px;">Overall CI Maturity Score</div>
-                    <div style="color: #53a5a5; font-size: 56px; font-weight: 700;">2.5 / 5.0</div>
-                    <div style="color: #53a5a5; font-size: 15px; margin-top: 10px;">Target: 3.5 by Q3 2026</div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Slide 4: Competencies Overview -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2 class="slide-title">Customer Intelligence Competencies</h2>
-                <p class="slide-subtitle">Six key capabilities driving CI maturity</p>
+            <!-- Slide 2: The Problem -->
+            <div class="slide" id="slide-2">
+                <h2>The Marketing Challenge</h2>
+                <p>Traditional customer research creates a gap between your ideas and evidence</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Traditional Approach</th>
+                            <th>With Wisdom</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>❌ Wait 3 weeks for research team</td>
+                            <td>✅ Get answers in 30 seconds</td>
+                        </tr>
+                        <tr>
+                            <td>❌ Survey-prompted responses</td>
+                            <td>✅ Unfiltered authentic feedback</td>
+                        </tr>
+                        <tr>
+                            <td>❌ Complex filters and reports</td>
+                            <td>✅ Natural conversation</td>
+                        </tr>
+                        <tr>
+                            <td>❌ Subjective creative debates</td>
+                            <td>✅ Data-backed decisions</td>
+                        </tr>
+                        <tr>
+                            <td>❌ Point-in-time snapshots</td>
+                            <td>✅ Continuous learning</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span class="slide-number">2</span>
             </div>
-            <div class="competencies-grid">
-                <div class="competency-card lead">
-                    <div class="competency-header">
-                        <div class="competency-name">LEAD</div>
-                        <div class="competency-score score-adequate">2.7</div>
+
+            <!-- Slide 3: What is Wisdom -->
+            <div class="slide" id="slide-3">
+                <h2>What is Wisdom?</h2>
+                <p class="subtitle">Your On-Demand Research Analyst</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3>Conversational Interface</h3>
+                        <p>Ask questions in plain English. No query languages, no complex filters.</p>
                     </div>
-                    <div class="competency-description">
-                        Architect, align, and sustain successful Customer Intelligence efforts
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>All Feedback Sources</h3>
+                        <p>Searches across surveys, interviews, support tickets, reviews, and more.</p>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 54%;"></div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Quantified Insights</h3>
+                        <p>Theme volumes, trends, and confidence scores backed by real data.</p>
                     </div>
-                    <ul class="skills-list">
-                        <li>✓ Defined North Star: Product Quality</li>
-                        <li>✓ Establishing governance with Enterpret</li>
-                        <li>⚠ Need formalized CI strategy & roadmap</li>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">💎</div>
+                        <h3>Verbatim Quotes</h3>
+                        <p>See what customers actually said, with full attribution and links.</p>
+                    </div>
+                </div>
+                <span class="slide-number">3</span>
+            </div>
+
+            <!-- (ALL YOUR OTHER SLIDES UNCHANGED) -->
+            <!-- Slide 4 ... Slide 12 -->
+            <!-- KEEP EVERYTHING BELOW EXACTLY AS YOU HAD IT -->
+
+            <!-- Slide 4: Phase 1 - Message Concept -->
+            <div class="slide" id="slide-4">
+                <h2>Phase 1: Message Concept Exploration</h2>
+
+                <div class="phase-container">
+                    <div class="phase-header">Instead of building complex reports...</div>
+                    <div class="phase-content">
+                        <div class="example-query">
+                            "What are the top themes customers mention when talking about building their online presence?"
+                        </div>
+
+                        <div class="example-query">
+                            "Show me how customers describe their website creation frustrations in their own words"
+                        </div>
+
+                        <div class="example-query">
+                            "What problems do creators mention most when talking about establishing credibility?"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>Wisdom Delivers:</h3>
+                    <ul class="benefit-list" style="margin-top: 20px;">
+                        <li>Searches across all feedback sources simultaneously</li>
+                        <li>Quantifies theme volumes and shows trending patterns</li>
+                        <li>Pulls verbatim quotes with proper attribution</li>
+                        <li>Identifies patterns you might not have considered</li>
                     </ul>
                 </div>
-
-                <div class="competency-card realize">
-                    <div class="competency-header">
-                        <div class="competency-name">REALIZE</div>
-                        <div class="competency-score score-weak">2.3</div>
-                    </div>
-                    <div class="competency-description">
-                        Track and ensure CI efforts achieve well-defined business objectives
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 46%;"></div>
-                    </div>
-                    <ul class="skills-list">
-                        <li>✓ Clear North Star and KPI tree structure</li>
-                        <li>⚠ ROI modeling needed for CI initiatives</li>
-                        <li>⚠ Need to tie CI metrics to business outcomes</li>
-                    </ul>
-                </div>
-
-                <div class="competency-card activate">
-                    <div class="competency-header">
-                        <div class="competency-name">ACTIVATE</div>
-                        <div class="competency-score score-weak">2.5</div>
-                    </div>
-                    <div class="competency-description">
-                        Ensure organization has skills, support, and motivation to achieve results
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 50%;"></div>
-                    </div>
-                    <ul class="skills-list">
-                        <li>✓ Initial stakeholder education begun</li>
-                        <li>⚠ Need systematic CI training across teams</li>
-                        <li>⚠ HR integration for CI behaviors pending</li>
-                    </ul>
-                </div>
-
-                <div class="competency-card enlighten">
-                    <div class="competency-header">
-                        <div class="competency-name">ENLIGHTEN</div>
-                        <div class="competency-score score-strong">3.2</div>
-                    </div>
-                    <div class="competency-description">
-                        Provide actionable insights across the organization
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 64%;"></div>
-                    </div>
-                    <ul class="skills-list">
-                        <li>✓ Comprehensive data sources (50K+ feedback/mo)</li>
-                        <li>✓ Enterpret Wisdom implementation underway</li>
-                        <li>✓ Segment definition completed (3 segments)</li>
-                    </ul>
-                </div>
-
-                <div class="competency-card respond">
-                    <div class="competency-header">
-                        <div class="competency-name">RESPOND</div>
-                        <div class="competency-score score-weak">2.2</div>
-                    </div>
-                    <div class="competency-description">
-                        Prioritize and drive improvements based on insights
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 44%;"></div>
-                    </div>
-                    <ul class="skills-list">
-                        <li>⚠ Inner loop (1:1 follow-up) not systematized</li>
-                        <li>⚠ Outer loop (strategic improvements) needed</li>
-                        <li>⚠ Cross-functional action planning to establish</li>
-                    </ul>
-                </div>
-
-                <div class="competency-card disrupt">
-                    <div class="competency-header">
-                        <div class="competency-name">DISRUPT</div>
-                        <div class="competency-score score-weak">2.1</div>
-                    </div>
-                    <div class="competency-description">
-                        Identify and create experiences that differentiate the organization
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 42%;"></div>
-                    </div>
-                    <ul class="skills-list">
-                        <li>⚠ Journey mapping not yet systematic</li>
-                        <li>⚠ Design thinking processes to establish</li>
-                        <li>⚠ Experience innovation framework needed</li>
-                    </ul>
-                </div>
+                <span class="slide-number">4</span>
             </div>
+
+            <!-- Slide 5: Phase 2 - Language Validation -->
+            <div class="slide" id="slide-5">
+                <h2>Phase 2: Language Validation</h2>
+                <p>Stop guessing at customer language. Find out what they actually say.</p>
+
+                <div class="conversation-demo">
+                    <div class="chat-message user">
+                        <div class="chat-label">You Ask:</div>
+                        <p style="margin: 0; color: white;">"We're considering the phrase 'build without limits' - do customers actually use language like this? What do they say instead?"</p>
+                    </div>
+
+                    <div class="chat-message wisdom">
+                        <div class="chat-label" style="color: var(--woo-purple-50);">Wisdom Responds:</div>
+                        <p><strong>Phrase Analysis:</strong> "build without limits" appears 3 times in 847,000+ feedback items</p>
+                        <p><strong>Customers actually say:</strong></p>
+                        <ul style="margin-left: 20px; color: var(--gray-700);">
+                            <li>"make it my own" (2,847 mentions)</li>
+                            <li>"customize everything" (1,923 mentions)</li>
+                            <li>"easy to change" (1,654 mentions)</li>
+                            <li>"flexible design options" (1,234 mentions)</li>
+                        </ul>
+                    </div>
+
+                    <div class="chat-message user">
+                        <div class="chat-label">You Follow Up:</div>
+                        <p style="margin: 0; color: white;">"Pull 5 examples where they mention 'make it my own' in context"</p>
+                    </div>
+
+                    <div class="chat-message wisdom">
+                        <div class="chat-label" style="color: var(--woo-purple-50);">Wisdom Delivers:</div>
+                        <p style="font-style: italic; color: var(--gray-700);">[Provides 5 verbatim customer quotes with attribution links showing authentic language in context]</p>
+                    </div>
+                </div>
+                <span class="slide-number">5</span>
+            </div>
+
+            <!-- Slide 6 -->
+            <div class="slide" id="slide-6">
+                <h2>Phase 3: Segment-Specific Insights</h2>
+                <p>Understand how different personas talk about your product differently</p>
+
+                <div class="workflow-step">
+                    <span class="step-number">1</span>
+                    <strong>Segment Comparison:</strong> "How do professional creators talk about website features differently than hobbyists?"
+                </div>
+
+                <div class="workflow-step">
+                    <span class="step-number">2</span>
+                    <strong>Focus Analysis:</strong> "Show me what e-commerce focused creators care about most vs. content creators"
+                </div>
+
+                <div class="workflow-step">
+                    <span class="step-number">3</span>
+                    <strong>Jobs-to-be-Done:</strong> "What jobs-to-be-done come up most frequently for [specific segment]?"
+                </div>
+
+                <div class="highlight-box">
+                    <h3>Results You Get:</h3>
+                    <p>✓ Filter to specific customer segments<br>
+                    ✓ Compare themes and language across personas<br>
+                    ✓ Surface segment-unique needs vs. universal ones<br>
+                    ✓ Quantify which segments talk about which topics most</p>
+                </div>
+                <span class="slide-number">6</span>
+            </div>
+
+            <!-- Slide 7 -->
+            <div class="slide" id="slide-7">
+                <h2>Phase 4: Competitive Messaging Analysis</h2>
+
+                <div class="phase-container">
+                    <div class="phase-header">Find Your Differentiation in Customer Voice</div>
+                    <div class="phase-content">
+                        <div class="example-query">
+                            "What do customers say about why they chose us vs. Squarespace?"
+                        </div>
+
+                        <div class="example-query">
+                            "Find feedback where customers compare our platform to competitors - what language do they use?"
+                        </div>
+
+                        <div class="example-query">
+                            "What unmet needs do customers mention that competitors aren't addressing?"
+                        </div>
+
+                        <div style="margin-top: 30px; padding: 25px; background: white; border-radius: 12px; border: 2px solid var(--woo-purple-40);">
+                            <h3 style="margin-bottom: 15px;">Wisdom Extracts:</h3>
+                            <ul style="color: var(--gray-700); line-height: 2;">
+                                <li>🎯 <strong>Competitive context</strong> from authentic feedback</li>
+                                <li>💡 <strong>Differentiation opportunities</strong> you can own</li>
+                                <li>🗣️ <strong>Authentic positioning language</strong> customers use</li>
+                                <li>📈 <strong>Volume data</strong> showing what matters most</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <span class="slide-number">7</span>
+            </div>
+
+            <!-- Slide 8 -->
+            <div class="slide" id="slide-8">
+                <h2>Phase 5: Pre-Campaign Validation</h2>
+                <p class="subtitle">Test message-market fit BEFORE you spend on creative production</p>
+
+                <div class="conversation-demo">
+                    <div class="chat-message user">
+                        <div class="chat-label">Before Launch:</div>
+                        <p style="margin: 0; color: white;">"We're about to launch messaging around 'professional credibility' - what's the sentiment when customers mention credibility or trust?"</p>
+                    </div>
+
+                    <div class="chat-message wisdom">
+                        <div class="chat-label" style="color: var(--woo-purple-50);">Wisdom Analysis:</div>
+                        <p><strong>Theme: Professional Credibility</strong></p>
+                        <p>📊 Volume: 4,234 mentions (last 6 months)<br>
+                        📈 Trend: +32% vs. prior period<br>
+                        😊 Sentiment: 78% positive<br>
+                        🎯 Confidence: HIGH</p>
+                        <p style="margin-top: 15px;"><strong>Top associated needs:</strong> "look professional" (847), "trust signals" (623), "established business" (445)</p>
+                    </div>
+                </div>
+
+                <div class="metric-grid" style="margin-top: 40px;">
+                    <div class="metric-card">
+                        <div class="metric-value">✅</div>
+                        <div class="metric-label">Validates Emphasis</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">⚠️</div>
+                        <div class="metric-label">Flags Misalignment</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">🔍</div>
+                        <div class="metric-label">Surfaces Emerging Themes</div>
+                    </div>
+                </div>
+                <span class="slide-number">8</span>
+            </div>
+
+            <!-- Slide 9 -->
+            <div class="slide" id="slide-9">
+                <h2>Real 10-Minute Session</h2>
+                <p><strong>Goal:</strong> Validate messaging for Q1 creator campaign</p>
+
+                <div class="phase-container">
+                    <div class="phase-header">The Questions She Asked</div>
+                    <div class="phase-content">
+                        <div class="workflow-step">
+                            <span class="step-number">1</span>
+                            "What are the top 5 themes in creator feedback over the last 6 months?"
+                        </div>
+
+                        <div class="workflow-step">
+                            <span class="step-number">2</span>
+                            "Focus on 'ease of use' - show me what specific features they want to be easier"
+                        </div>
+
+                        <div class="workflow-step">
+                            <span class="step-number">3</span>
+                            "Pull 3 examples where creators describe feeling frustrated with complexity"
+                        </div>
+
+                        <div class="workflow-step">
+                            <span class="step-number">4</span>
+                            "Compare this to 6 months ago - is ease of use becoming more or less important?"
+                        </div>
+
+                        <div class="workflow-step">
+                            <span class="step-number">5</span>
+                            "What positive feedback do we get about ease of use - what's working?"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 40px;">
+                    <h3>What She Got in 10 Minutes:</h3>
+                    <p>✅ Quantified theme ranking<br>
+                    ✅ Sub-theme breakdown with volumes<br>
+                    ✅ 3 verbatim quotes with attribution links<br>
+                    ✅ Trend comparison showing +23% increase<br>
+                    ✅ 5 positive examples showing what customers value<br><br>
+                    <strong style="color: var(--woo-purple-50); font-size: 1.2rem;">Result: Data-backed messaging direction with authentic quotes for creative briefs</strong></p>
+                </div>
+                <span class="slide-number">9</span>
+            </div>
+
+            <!-- Slide 10 -->
+            <div class="slide" id="slide-10">
+                <h2>5 Specific Value Props for Marketing</h2>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Speed to Insight</h3>
+                        <p>Answer "Does this message resonate?" in 30 seconds, not 3 weeks. No waiting for research team availability or survey design delays.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🎤</div>
+                        <h3>Authentic Voice</h3>
+                        <p>Real customer language from natural interactions. Not survey-prompted responses. Context-rich quotes showing true intent.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">💪</div>
+                        <h3>Confident Decisions</h3>
+                        <p>Back up message choices with data. Show stakeholders real evidence. Reduce subjective debates with objective facts.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>Continuous Learning</h3>
+                        <p>Check back monthly: "How have priorities shifted?" Track if launches changed the conversation. Adjust as market evolves.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🤝</div>
+                        <h3>Cross-Functional Alignment</h3>
+                        <p>Share Wisdom conversations with product/CX teams. Everyone works from same customer understanding. Dashboard links for verification.</p>
+                    </div>
+                </div>
+                <span class="slide-number">10</span>
+            </div>
+
+            <!-- Slide 11 -->
+            <div class="slide" id="slide-11">
+                <h2>Making It Part of Your Workflow</h2>
+
+                <div class="workflow-step">
+                    <span class="step-number">📅</span>
+                    <strong>Weekly:</strong> Quick 10-minute check-in with Wisdom on trending themes and emerging customer needs
+                </div>
+
+                <div class="workflow-step">
+                    <span class="step-number">🎨</span>
+                    <strong>Pre-Campaign:</strong> Message validation sessions before creative production to ensure message-market fit
+                </div>
+
+                <div class="workflow-step">
+                    <span class="step-number">🚀</span>
+                    <strong>Post-Launch:</strong> Track if campaign themes align with ongoing customer feedback and sentiment shifts
+                </div>
+
+                <div class="workflow-step">
+                    <span class="step-number">💡</span>
+                    <strong>Ad-Hoc:</strong> Answer stakeholder questions with real data instead of guesswork or assumptions
+                </div>
+
+                <div class="cta-section" style="margin-top: 50px;">
+                    <h2 style="color: white; margin-bottom: 20px;">The Key Advantage</h2>
+                    <p style="color: white; font-size: 1.3rem; margin-bottom: 30px;">Wisdom removes friction between your idea and customer evidence.<br>No tickets • No waiting • No query languages<br><strong>Just ask questions and get answers backed by real customer voice.</strong></p>
+                </div>
+                <span class="slide-number">11</span>
+            </div>
+
+            <!-- Slide 12 -->
+            <div class="slide" id="slide-12">
+                <div class="cta-section">
+                    <h1 style="color: white;">Ready to Transform Your Marketing?</h1>
+                    <p style="color: white; font-size: 1.4rem; margin: 30px 0;">Turn customer voice into marketing gold in 30 seconds</p>
+
+                    <div class="metric-grid" style="margin: 50px 0;">
+                        <div class="metric-card">
+                            <div class="metric-value">30s</div>
+                            <div class="metric-label">From Question to Answer</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">100%</div>
+                            <div class="metric-label">Authentic Customer Voice</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">∞</div>
+                            <div class="metric-label">Insights Available</div>
+                        </div>
+                    </div>
+
+                    <a href="https://dashboard.enterpret.com/woo-commerce/wisdom" class="cta-button" target="_blank">Get Started with Wisdom</a>
+
+                    <p style="color: white; margin-top: 40px; font-size: 1.1rem;">
+                        <strong>Enterpret Wisdom</strong><br>
+                        Your on-demand research analyst for customer intelligence
+                    </p>
+                </div>
+                <span class="slide-number">12</span>
+            </div>
+
         </div>
 
-        <!-- Slide 5: Addressing CEO Concerns -->
-        <div class="slide">
-            <div class="slide-header" style="margin-bottom: 15px;">
-                <h2 class="slide-title">Addressing CEO Concerns</h2>
-                <p class="slide-subtitle">Matt Mullenweg's feedback and recommended actions</p>
-            </div>
-            
-            <div style="background: rgba(253, 111, 114, 0.15); border: 2px solid #244e4d; border-radius: 10px; padding: 15px; margin-bottom: 20px;">
-                <div style="color: #244e4d; font-size: 17px; font-weight: 600; margin-bottom: 8px;">CEO Feedback Summary</div>
-                <div style="color: #1a1d21; font-size: 14px; line-height: 1.5;">
-                    Matt expressed skepticism about Enterpret, preferring direct customer conversations and questioning the platform's value proposition.
-                </div>
-            </div>
-
-            <div class="challenge-grid" style="gap: 18px; margin-bottom: 18px;">
-                <div class="challenge-box" style="padding: 18px;">
-                    <h3 style="font-size: 17px; margin-bottom: 8px;">Challenge #1: "Talk to Customers Directly"</h3>
-                    <p style="font-size: 14px;"><strong>Concern:</strong> Why invest in a tool when teams can just talk to customers?</p>
-                </div>
-
-                <div class="action-box" style="padding: 18px;">
-                    <h3 style="font-size: 17px; margin-bottom: 8px;">Recommended Response</h3>
-                    <ul style="font-size: 14px; line-height: 1.5; margin: 0; padding-left: 20px;">
-                        <li style="margin-bottom: 4px;">Complements, not replaces, direct conversations</li>
-                        <li style="margin-bottom: 4px;">Scales 50K+ monthly feedback sources</li>
-                        <li style="margin-bottom: 4px;">Surfaces who to talk to and what to ask</li>
-                        <li>Demo: Identify merchants with Product Quality issues</li>
-                    </ul>
-                </div>
-
-                <div class="challenge-box" style="padding: 18px;">
-                    <h3 style="font-size: 17px; margin-bottom: 8px;">Challenge #2: Value Demonstration Gap</h3>
-                    <p style="font-size: 14px;"><strong>Concern:</strong> Unclear how Enterpret improves Product Quality vs. existing methods</p>
-                </div>
-
-                <div class="action-box" style="padding: 18px;">
-                    <h3 style="font-size: 17px; margin-bottom: 8px;">Proof Points to Present</h3>
-                    <ul style="font-size: 14px; line-height: 1.5; margin: 0; padding-left: 20px;">
-                        <li style="margin-bottom: 4px;">ROI Model: CI insights → bug reduction correlation</li>
-                        <li style="margin-bottom: 4px;">Case Study: 20K cancellations → top 3 churn drivers</li>
-                        <li style="margin-bottom: 4px;">Time Savings: Hours saved vs. manual analysis</li>
-                        <li>Matt defines success criteria, measure in 90 days</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="padding: 15px; background: rgba(255, 175, 1, 0.1); border-left: 4px solid #53a5a5; border-radius: 8px;">
-                <div style="color: #53a5a5; font-size: 16px; font-weight: 600; margin-bottom: 8px;">Critical Next Step with Matt</div>
-                <div style="color: #3e444d; font-size: 14px; line-height: 1.5;">
-                    <strong>Within 2 weeks:</strong> 30-min executive demo answering: <em>"Which Product Quality issues cost the most merchants, and which customers should we talk to first?"</em> Use Enterpret to identify answers in real-time, then facilitate direct merchant conversations.
-                </div>
-            </div>
+        <div class="nav-dots">
+            <div class="nav-dot active" data-slide="1"></div>
+            <div class="nav-dot" data-slide="2"></div>
+            <div class="nav-dot" data-slide="3"></div>
+            <div class="nav-dot" data-slide="4"></div>
+            <div class="nav-dot" data-slide="5"></div>
+            <div class="nav-dot" data-slide="6"></div>
+            <div class="nav-dot" data-slide="7"></div>
+            <div class="nav-dot" data-slide="8"></div>
+            <div class="nav-dot" data-slide="9"></div>
+            <div class="nav-dot" data-slide="10"></div>
+            <div class="nav-dot" data-slide="11"></div>
+            <div class="nav-dot" data-slide="12"></div>
         </div>
 
-        <!-- Slide 6: Best Practice - Closed-Loop Process -->
-        <div class="slide">
-            <div class="slide-header" style="margin-bottom: 15px;">
-                <h2 class="slide-title">Best Practice: Closed-Loop Process</h2>
-                <p class="slide-subtitle">Feedback → Discovery → Loop Closing → Notification</p>
-            </div>
+        <script>
+            // Navigation dots functionality
+            document.querySelectorAll('.nav-dot').forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideNum = this.getAttribute('data-slide');
+                    const targetSlide = document.getElementById(`slide-${slideNum}`);
 
-            <!-- Why This Matters - Moved to Top -->
-            <div style="background: rgba(179, 173, 255, 0.1); border-left: 4px solid #53a5a5; border-radius: 8px; padding: 12px; margin-bottom: 15px;">
-                <div style="color: #53a5a5; font-size: 14px; font-weight: 600; margin-bottom: 6px;">💡 Why This Matters for WooCommerce</div>
-                <div style="color: #3e444d; font-size: 12px; line-height: 1.5;">
-                    This systematic process demonstrates mature closed-loop feedback management: Using Enterpret to discover patterns + manual search for real-time insights → 
-                    Converting to JIRA source of truth → Product team ships improvements → Optionally notifying merchants their feedback drove change. 
-                    This directly supports your <strong style="color: #53a5a5;">Product Quality North Star</strong> by prioritizing validated customer problems and building merchant trust. The CTL team expansion (adding 20 UX researchers) shows commitment to scaling discovery capacity.
-                </div>
-            </div>
-            
-            <!-- Feedback Sources -->
-            <div style="text-align: center; margin-bottom: 15px;">
-                <div style="display: inline-flex; gap: 15px; padding: 10px 25px; background: rgba(179, 173, 255, 0.1); border: 2px solid #53a5a5; border-radius: 8px;">
-                    <span style="color: #53a5a5; font-size: 13px; font-weight: 600;">📥 Feedback Sources:</span>
-                    <span style="color: #3e444d; font-size: 13px;">App Reviews</span>
-                    <span style="color: #85837e;">•</span>
-                    <span style="color: #3e444d; font-size: 13px;">Support Tickets</span>
-                    <span style="color: #85837e;">•</span>
-                    <span style="color: #3e444d; font-size: 13px;">Surveys/NPS</span>
-                    <span style="color: #85837e;">•</span>
-                    <span style="color: #3e444d; font-size: 13px;">Social Media</span>
-                </div>
-            </div>
+                    if (targetSlide) {
+                        targetSlide.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
-                <!-- P0: Discovery -->
-                <div style="background: rgba(145, 227, 234, 0.1); border: 2px solid #53a5a5; border-radius: 10px; padding: 15px;">
-                    <div style="color: #53a5a5; font-size: 18px; font-weight: 700; margin-bottom: 8px;">🎯 P0: Discovery</div>
-                    <div style="color: #1a1d21; font-size: 14px; font-weight: 600; margin-bottom: 8px;">High Value</div>
-                    <div style="color: #3e444d; font-size: 13px; line-height: 1.4; margin-bottom: 8px;">
-                        <strong style="color: #53a5a5;">Goal:</strong> Identify high-value customer problems
-                    </div>
-                    
-                    <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 8px; margin-bottom: 6px;">
-                        <div style="color: #53a5a5; font-size: 12px; font-weight: 600; margin-bottom: 3px;">Path A: Pattern Analysis</div>
-                        <div style="color: #3e444d; font-size: 11px;">Enterpret - Deep synthesis & trends</div>
-                    </div>
-                    
-                    <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 8px; margin-bottom: 8px;">
-                        <div style="color: #53a5a5; font-size: 12px; font-weight: 600; margin-bottom: 3px;">Path B: Manual Search</div>
-                        <div style="color: #3e444d; font-size: 11px;">Insights Tool - Real-time, exploratory</div>
-                    </div>
-
-                    <div style="color: #53a5a5; font-size: 12px; margin-bottom: 4px;">↓ Then:</div>
-                    <ul style="color: #3e444d; font-size: 11px; line-height: 1.3; margin: 0 0 8px 0; padding-left: 13px;">
-                        <li>Group into Loop (manual)</li>
-                        <li>Create JIRA ticket (source of truth)</li>
-                    </ul>
-                    
-                    <div style="margin-top: 8px; padding: 6px; background: rgba(255, 175, 1, 0.15); border-radius: 4px;">
-                        <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Close the Loop Team (CTL)</div>
-                        <div style="color: #3e444d; font-size: 10px; line-height: 1.3;">Searches patterns • Groups feedback • Creates JIRA • Notifies customers • Adding UX researchers</div>
-                    </div>
-                </div>
-
-                <!-- Loop Closing -->
-                <div style="background: rgba(255, 175, 1, 0.1); border: 2px solid #53a5a5; border-radius: 10px; padding: 15px;">
-                    <div style="color: #53a5a5; font-size: 18px; font-weight: 700; margin-bottom: 8px;">🚀 Loop Closing</div>
-                    <div style="color: #1a1d21; font-size: 14px; font-weight: 600; margin-bottom: 8px;">Product Execution</div>
-                    <div style="color: #3e444d; font-size: 13px; line-height: 1.4; margin-bottom: 10px;">
-                        <strong style="color: #53a5a5;">Goal:</strong> Turn validated feedback into shipped features
-                    </div>
-                    
-                    <div style="color: #53a5a5; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Process Steps:</div>
-                    <div style="display: flex; flex-direction: column; gap: 6px;">
-                        <div style="background: rgba(255, 175, 1, 0.15); border-radius: 6px; padding: 6px;">
-                            <div style="color: #53a5a5; font-size: 12px; font-weight: 600;">1. Review Loops</div>
-                            <div style="color: #3e444d; font-size: 11px;">In planning cycles</div>
-                        </div>
-                        <div style="background: rgba(255, 175, 1, 0.15); border-radius: 6px; padding: 6px;">
-                            <div style="color: #53a5a5; font-size: 12px; font-weight: 600;">2. Build Feature</div>
-                            <div style="color: #3e444d; font-size: 11px;">Timeline: Weeks/Months</div>
-                        </div>
-                        <div style="background: rgba(255, 175, 1, 0.15); border-radius: 6px; padding: 6px;">
-                            <div style="color: #53a5a5; font-size: 12px; font-weight: 600;">3. Ship to Production</div>
-                            <div style="color: #3e444d; font-size: 11px;">Loop officially closes</div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 8px; padding: 6px; background: rgba(253, 111, 114, 0.15); border-radius: 4px;">
-                        <div style="color: #244e4d; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Product Teams</div>
-                        <div style="color: #3e444d; font-size: 10px; line-height: 1.3;">Review loops in planning • Build features • Ship features (closes loop)</div>
-                    </div>
-                </div>
-
-                <!-- P1: Notification -->
-                <div style="background: rgba(151, 211, 203, 0.1); border: 2px solid #53a5a5; border-radius: 10px; padding: 15px;">
-                    <div style="color: #53a5a5; font-size: 18px; font-weight: 700; margin-bottom: 8px;">🔔 P1: Notification</div>
-                    <div style="color: #1a1d21; font-size: 14px; font-weight: 600; margin-bottom: 8px;">Lower Priority (Optional)</div>
-                    <div style="color: #3e444d; font-size: 13px; line-height: 1.4; margin-bottom: 10px;">
-                        <strong style="color: #53a5a5;">Goal:</strong> Inform users feedback was addressed
-                    </div>
-                    
-                    <div style="color: #53a5a5; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Process Steps:</div>
-                    <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px;">
-                        <div style="background: rgba(151, 211, 203, 0.15); border-radius: 6px; padding: 6px;">
-                            <div style="color: #53a5a5; font-size: 12px; font-weight: 600;">1. Find Users</div>
-                            <div style="color: #3e444d; font-size: 11px;">Via Insights Tool (manual search)</div>
-                        </div>
-                        <div style="background: rgba(151, 211, 203, 0.15); border-radius: 6px; padding: 6px;">
-                            <div style="color: #53a5a5; font-size: 12px; font-weight: 600;">2. Send Emails</div>
-                            <div style="color: #3e444d; font-size: 11px;">Via email tool</div>
-                        </div>
-                        <div style="background: rgba(151, 211, 203, 0.15); border-radius: 6px; padding: 6px;">
-                            <div style="color: #53a5a5; font-size: 12px; font-weight: 600;">3. Track Metrics</div>
-                            <div style="color: #3e444d; font-size: 11px;">Loops closed, users notified</div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 8px; padding: 6px; background: rgba(145, 227, 234, 0.15); border-radius: 4px;">
-                        <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Close the Loop Team (CTL)</div>
-                        <div style="color: #3e444d; font-size: 10px; line-height: 1.3;">Finds users • Sends notification emails • Tracks metrics</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- JIRA Importance Box -->
-            <div style="background: rgba(253, 111, 114, 0.1); border: 2px solid #244e4d; border-radius: 8px; padding: 12px;">
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-                    <div style="color: #244e4d; font-size: 14px; font-weight: 700;">🎫 Why JIRA Is Critical with Enterpret</div>
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
-                    <div>
-                        <div style="color: #244e4d; font-size: 11px; font-weight: 600; margin-bottom: 4px;">Source of Truth</div>
-                        <div style="color: #3e444d; font-size: 10px; line-height: 1.4;">Single location for all feedback loops with complete context</div>
-                    </div>
-                    <div>
-                        <div style="color: #244e4d; font-size: 11px; font-weight: 600; margin-bottom: 4px;">Contains</div>
-                        <div style="color: #3e444d; font-size: 10px; line-height: 1.4;">Insight • Data • Context • Filters • Static Enterpret links</div>
-                    </div>
-                    <div>
-                        <div style="color: #244e4d; font-size: 11px; font-weight: 600; margin-bottom: 4px;">Used By</div>
-                        <div style="color: #3e444d; font-size: 10px; line-height: 1.4;">Product teams (planning) • Leadership (prioritization)</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 7: Best Practice - Product Councils -->
-        <div class="slide">
-            <div class="slide-header" style="margin-bottom: 15px;">
-                <h2 class="slide-title">Best Practice: Product Councils</h2>
-                <p class="slide-subtitle">A framework for customer-centric product development</p>
-            </div>
-
-            <!-- Why This Matters - Moved to Top -->
-            <div style="background: rgba(179, 173, 255, 0.1); border-left: 4px solid #53a5a5; border-radius: 8px; padding: 14px; margin-bottom: 15px;">
-                <div style="color: #53a5a5; font-size: 14px; font-weight: 600; margin-bottom: 8px;">💡 Why This Matters for WooCommerce</div>
-                <div style="color: #3e444d; font-size: 12px; line-height: 1.6;">
-                    Product Councils create a <strong style="color: #53a5a5;">governance structure</strong> that ensures customer feedback from Enterpret directly influences product decisions. 
-                    By bringing together Product, Engineering, Design, and Customer Success bi-weekly, WooCommerce can systematically translate merchant feedback into roadmap priorities 
-                    aligned with your <strong style="color: #53a5a5;">Product Quality North Star</strong>. This structure prevents feedback from being siloed and ensures 
-                    cross-functional buy-in before features are built.
-                </div>
-            </div>
-
-            <!-- Definition Box -->
-            <div style="background: rgba(179, 173, 255, 0.15); border: 2px solid #53a5a5; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
-                <div style="color: #53a5a5; font-size: 15px; font-weight: 700; margin-bottom: 8px;">📋 What Are Product Councils?</div>
-                <div style="color: #1a1d21; font-size: 12px; line-height: 1.6; margin-bottom: 6px;">
-                    Structured, cross-functional forums designed to drive strategic product decisions through collaborative evaluation of customer feedback, internal insights, and business objectives.
-                </div>
-                <div style="color: #3e444d; font-size: 11px; line-height: 1.5;">
-                    Regularly scheduled meetings where representatives from Product, Engineering, Design, Customer Success, and other key teams evaluate customer feedback and translate it into actionable product decisions. Each product area has its own council.
-                </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px;">
-                <!-- Cross-Functional Composition -->
-                <div style="background: rgba(145, 227, 234, 0.1); border: 2px solid #53a5a5; border-radius: 10px; padding: 18px;">
-                    <div style="color: #53a5a5; font-size: 16px; font-weight: 700; margin-bottom: 12px;">👥 Cross-Functional Composition</div>
-                    <div style="color: #3e444d; font-size: 12px; line-height: 1.5; margin-bottom: 12px;">
-                        Each council includes one representative from:
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                        <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 10px;">
-                            <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Product Management</div>
-                            <div style="color: #3e444d; font-size: 10px;">Strategic direction & roadmap</div>
-                        </div>
-                        <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 10px;">
-                            <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Engineering</div>
-                            <div style="color: #3e444d; font-size: 10px;">Technical feasibility</div>
-                        </div>
-                        <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 10px;">
-                            <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Design</div>
-                            <div style="color: #3e444d; font-size: 10px;">User experience & interface</div>
-                        </div>
-                        <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 10px;">
-                            <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Customer Advisory/Success</div>
-                            <div style="color: #3e444d; font-size: 10px;">Voice of customer</div>
-                        </div>
-                        <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 10px;">
-                            <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Product Marketing</div>
-                            <div style="color: #3e444d; font-size: 10px;">Market positioning</div>
-                        </div>
-                        <div style="background: rgba(145, 227, 234, 0.15); border-radius: 6px; padding: 10px;">
-                            <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Sales Engineering</div>
-                            <div style="color: #3e444d; font-size: 10px;">Field insights & demos</div>
-                        </div>
-                    </div>
-                    <div style="margin-top: 12px; padding: 10px; background: rgba(255, 175, 1, 0.1); border-radius: 6px;">
-                        <div style="color: #53a5a5; font-size: 11px; font-weight: 600; margin-bottom: 3px;">✓ Ensures Diverse Perspectives</div>
-                        <div style="color: #3e444d; font-size: 10px; line-height: 1.4;">While maintaining focused, accountable participation</div>
-                    </div>
-                </div>
-
-                <!-- Meeting Cadence -->
-                <div style="background: rgba(255, 175, 1, 0.1); border: 2px solid #53a5a5; border-radius: 10px; padding: 18px;">
-                    <div style="color: #53a5a5; font-size: 16px; font-weight: 700; margin-bottom: 12px;">📅 Meeting Cadence</div>
-                    
-                    <div style="background: rgba(255, 175, 1, 0.15); border-radius: 8px; padding: 12px; margin-bottom: 10px;">
-                        <div style="color: #53a5a5; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Bi-Weekly Synchronous Meetings</div>
-                        <div style="color: #3e444d; font-size: 11px; line-height: 1.5;">
-                            • Across all product areas<br>
-                            • Consistent schedule builds routine<br>
-                            • Maintains momentum on feedback review
-                        </div>
-                    </div>
-
-                    <div style="background: rgba(255, 175, 1, 0.15); border-radius: 8px; padding: 12px; margin-bottom: 10px;">
-                        <div style="color: #53a5a5; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Aligned with Product Development</div>
-                        <div style="color: #3e444d; font-size: 11px; line-height: 1.5;">
-                            • Synced with Product Development Lifecycle<br>
-                            • Integrated into quarterly roadmap planning<br>
-                            • Timing ensures feedback informs decisions
-                        </div>
-                    </div>
-
-                    <div style="background: rgba(255, 175, 1, 0.15); border-radius: 8px; padding: 12px;">
-                        <div style="color: #53a5a5; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Special Sessions</div>
-                        <div style="color: #3e444d; font-size: 11px; line-height: 1.5;">
-                            • Feedback delivery sessions: 2x per quarter<br>
-                            • Follow-up meetings as needed<br>
-                            • Deep dives on critical feedback themes
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Key Benefits -->
-            <div style="background: rgba(151, 211, 203, 0.1); border: 2px solid #53a5a5; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
-                <div style="color: #53a5a5; font-size: 16px; font-weight: 700; margin-bottom: 10px;">🎯 Key Benefits of Product Councils</div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px;">
-                    <div>
-                        <div style="color: #53a5a5; font-size: 13px; font-weight: 600; margin-bottom: 4px;">Cross-Functional Alignment</div>
-                        <div style="color: #3e444d; font-size: 12px; line-height: 1.4;">Breaks down silos, ensures all perspectives heard</div>
-                    </div>
-                    <div>
-                        <div style="color: #53a5a5; font-size: 13px; font-weight: 600; margin-bottom: 4px;">Systematic Evaluation</div>
-                        <div style="color: #3e444d; font-size: 12px; line-height: 1.4;">Structured process for feedback review</div>
-                    </div>
-                    <div>
-                        <div style="color: #53a5a5; font-size: 13px; font-weight: 600; margin-bottom: 4px;">Clear Accountability</div>
-                        <div style="color: #3e444d; font-size: 12px; line-height: 1.4;">Designated representatives own decisions</div>
-                    </div>
-                    <div>
-                        <div style="color: #53a5a5; font-size: 13px; font-weight: 600; margin-bottom: 4px;">Rapid Decision-Making</div>
-                        <div style="color: #3e444d; font-size: 12px; line-height: 1.4;">Regular cadence accelerates action</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 8: Top Recommendations Part 1 -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2 class="slide-title">Priority Recommendations (1-4)</h2>
-                <p class="slide-subtitle">Critical actions to accelerate maturity</p>
-            </div>
-            <div class="recommendations-list">
-                <div class="recommendation-item">
-                    <div class="recommendation-header">
-                        <h3>1. Formalize Governance & Customer Intelligence Strategy</h3>
-                        <span class="priority-badge priority-critical">Critical</span>
-                    </div>
-                    <p><strong>Action:</strong> Establish cross-functional CI steering committee with Product Operations, Product Leadership, Engineering, Support, and Sales representatives.</p>
-                    <p><strong>Outcome:</strong> Formal CI strategy aligned with 2026 North Star (Product Quality) and strategic priorities: JTBD, Hosting & AI Adoption, WooCommerce Simplicity. Define quarterly OKRs.</p>
-                    <p><strong>Timeline:</strong> Q1 2026 (0-3 months)</p>
-                </div>
-
-                <div class="recommendation-item">
-                    <div class="recommendation-header">
-                        <h3>2. Build ROI Model Connecting CI to Product Quality</h3>
-                        <span class="priority-badge priority-critical">Critical</span>
-                    </div>
-                    <p><strong>Action:</strong> Develop quantitative model showing correlation between CI insights and Product Quality metrics (active bugs, point releases, merchant-reported issues).</p>
-                    <p><strong>Outcome:</strong> Executive dashboard showing how CI drives Product Quality improvements, enables data-driven bug fix prioritization, reduces engineering rework.</p>
-                    <p><strong>Timeline:</strong> Q1 2026 (0-3 months)</p>
-                </div>
-
-                <div class="recommendation-item">
-                    <div class="recommendation-header">
-                        <h3>3. Map Customer Intelligence to JTBD Framework</h3>
-                        <span class="priority-badge priority-high">High Priority</span>
-                    </div>
-                    <p><strong>Action:</strong> Analyze merchant feedback through JTBD lens for core journeys (order fulfillment, setup flows, payments, analytics, tax, shipping).</p>
-                    <p><strong>Outcome:</strong> Prioritized journey improvements aligned with merchant jobs. Connect feedback themes to JTBD categories for roadmap planning.</p>
-                    <p><strong>Timeline:</strong> Q1-Q2 2026 (0-6 months)</p>
-                </div>
-
-                <div class="recommendation-item">
-                    <div class="recommendation-header">
-                        <h3>4. Implement Systematic Closed-Loop Processes</h3>
-                        <span class="priority-badge priority-high">High Priority</span>
-                    </div>
-                    <p><strong>Action:</strong> Design inner loop (1:1 merchant follow-up) and outer loop (cross-functional improvements) using Enterpret workflows and Slack integrations.</p>
-                    <p><strong>Outcome:</strong> Reduce response time to critical issues, create customer-centric culture, document root causes for systemic Product Quality improvements.</p>
-                    <p><strong>Timeline:</strong> Q1-Q2 2026 (0-6 months)</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 9: Top Recommendations Part 2 -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2 class="slide-title">Priority Recommendations (5-8)</h2>
-                <p class="slide-subtitle">Building capability and scale</p>
-            </div>
-            <div class="recommendations-list">
-                <div class="recommendation-item">
-                    <div class="recommendation-header">
-                        <h3>5. Expand Role-Based Insights Distribution</h3>
-                        <span class="priority-badge priority-high">High Priority</span>
-                    </div>
-                    <p><strong>Action:</strong> Create tailored Enterpret dashboards for each stakeholder group with KPIs for Product Quality, JTBD completion, Hosting/AI adoption, WooCommerce Simplicity.</p>
-                    <p><strong>Outcome:</strong> Decision makers receive contextually relevant insights in workflow. Engineering sees bug feedback in real-time; Product Ops tracks JTBD friction.</p>
-                    <p><strong>Timeline:</strong> Q2 2026 (3-6 months)</p>
-                </div>
-
-                <div class="recommendation-item">
-                    <div class="recommendation-header">
-                        <h3>6. Track Hosting & AI Adoption Through CI</h3>
-                        <span class="priority-badge priority-medium">Medium Priority</span>
-                    </div>
-                    <p><strong>Action:</strong> Create dedicated Enterpret analysis streams for Hosting migration feedback and AI site builder adoption patterns.</p>
-                    <p><strong>Outcome:</strong> Data-driven insights to accelerate migrations and AI adoption. Identify ideal customer profiles, optimize onboarding flows, reduce migration friction.</p>
-                    <p><strong>Timeline:</strong> Q2-Q3 2026 (3-9 months)</p>
-                </div>
-
-                <div class="recommendation-item">
-                    <div class="recommendation-header">
-                        <h3>7. Develop CI Education & Enablement Program</h3>
-                        <span class="priority-badge priority-medium">Medium Priority</span>
-                    </div>
-                    <p><strong>Action:</strong> Create role-specific CI training for Product, Engineering, Support, Sales. Include Enterpret Wisdom usage, interpreting insights through Product Quality and JTBD lenses.</p>
-                    <p><strong>Outcome:</strong> Distributed CI capability, reduced central team dependency, improved customer interactions, faster time-to-resolution for Product Quality issues.</p>
-                    <p><strong>Timeline:</strong> Q2-Q3 2026 (3-9 months)</p>
-                </div>
-
-                <div class="recommendation-item">
-                    <div class="recommendation-header">
-                        <h3>8. Establish Journey Mapping for WooCommerce Simplicity</h3>
-                        <span class="priority-badge priority-medium">Medium Priority</span>
-                    </div>
-                    <p><strong>Action:</strong> Conduct journey mapping workshops for merchant segments focused on setup flows, payments, analytics, tax, shipping experiences.</p>
-                    <p><strong>Outcome:</strong> Visual understanding of merchant experience, prioritized friction points tied to Product Quality, actionable roadmap for simplifying workflows.</p>
-                    <p><strong>Timeline:</strong> Q3 2026 (6-9 months)</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 10: 90-Day Action Plan -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2 class="slide-title">90-Day Action Plan</h2>
-                <p class="slide-subtitle">Accelerating your maturity journey</p>
-            </div>
-            <div class="timeline-container">
-                <div class="timeline-item">
-                    <div class="timeline-dot-indicator"></div>
-                    <div class="timeline-phase">Phase 1: Foundation</div>
-                    <div class="timeline-title">Governance & Strategy Sprint</div>
-                    <ul class="timeline-actions">
-                        <li>Form Customer Intelligence Steering Committee with key stakeholders</li>
-                        <li>Draft CI strategy aligned to 2026 North Star (Product Quality) and strategic priorities</li>
-                        <li>Define success metrics: bug reduction rates, point release frequency, JTBD completion rates, Hosting/AI adoption</li>
-                        <li>Complete Enterpret data source integrations and validate data quality</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot-indicator"></div>
-                    <div class="timeline-phase">Phase 2: Quick Wins</div>
-                    <div class="timeline-title">First Insights & Product Quality Focus</div>
-                    <ul class="timeline-actions">
-                        <li>Run first Wisdom queries on highest-volume sources (Zendesk 5K, Cancellations 20K, Reddit 14K) focused on Product Quality issues</li>
-                        <li>Identify top 3 bug-related pain points per merchant segment and correlate with active bug reports</li>
-                        <li>Map merchant feedback to JTBD framework (order fulfillment, setup, payments, analytics, tax, shipping)</li>
-                        <li>Launch pilot inner loop process with Engineering team for critical Product Quality issues (50-100 merchants)</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot-indicator"></div>
-                    <div class="timeline-phase">Phase 3: Scale Insights</div>
-                    <div class="timeline-title">Role-Based Distribution & Analysis</div>
-                    <ul class="timeline-actions">
-                        <li>Build tailored dashboards for Product Ops, Engineering Leadership, Support, Sales teams focused on their KPIs</li>
-                        <li>Set up automated Slack workflows for critical feedback themes (Product Quality issues, JTBD friction, Hosting/AI feedback)</li>
-                        <li>Begin ROI modeling: correlate CI insights with Product Quality metrics (bug reduction, point release frequency)</li>
-                        <li>Document first outer loop improvement initiative addressing systemic Product Quality issue</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot-indicator"></div>
-                    <div class="timeline-phase">Phase 4: Operationalize</div>
-                    <div class="timeline-title">Make CI Part of Daily Operations</div>
-                    <ul class="timeline-actions">
-                        <li>Establish monthly Customer Intelligence review cadence with Steering Committee</li>
-                        <li>Launch Customer Intelligence training program for customer-facing teams</li>
-                        <li>Create "Voice of Merchant" stories for internal communications</li>
-                        <li>Measure impact: track closed-loop response rate, insight-to-action time, merchant satisfaction improvement</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 11: Key Metrics -->
-        <div class="slide">
-            <div class="slide-header" style="margin-bottom: 25px;">
-                <h2 class="slide-title">Key Customer Intelligence Metrics to Track</h2>
-                <p class="slide-subtitle">Success indicators for your CI program</p>
-            </div>
-            <div class="metrics-grid" style="gap: 20px; margin-bottom: 30px;">
-                <div class="metric-card" style="padding: 20px;">
-                    <div class="metric-value" style="color: #53a5a5; font-size: 42px;">2.5</div>
-                    <div class="metric-label" style="font-size: 13px;">Overall CI Maturity Score</div>
-                    <div class="metric-target" style="font-size: 12px;">Target: 3.5 by Q3 2026</div>
-                </div>
-
-                <div class="metric-card" style="padding: 20px;">
-                    <div class="metric-value" style="color: #53a5a5; font-size: 42px;">50K+</div>
-                    <div class="metric-label" style="font-size: 13px;">Monthly Feedback Volume</div>
-                    <div class="metric-target" style="font-size: 12px;">All sources integrated</div>
-                </div>
-
-                <div class="metric-card" style="padding: 20px;">
-                    <div class="metric-value" style="color: #244e4d; font-size: 42px;">0%</div>
-                    <div class="metric-label" style="font-size: 13px;">Closed-Loop Response Rate</div>
-                    <div class="metric-target" style="font-size: 12px;">Target: 80% by Q2 2026</div>
-                </div>
-
-                <div class="metric-card" style="padding: 20px;">
-                    <div class="metric-value" style="color: #53a5a5; font-size: 42px;">TBD</div>
-                    <div class="metric-label" style="font-size: 13px;">Product Quality Index</div>
-                    <div class="metric-target" style="font-size: 12px;">Active bugs + Point releases</div>
-                </div>
-            </div>
-            <div style="padding: 20px; background: rgba(145, 227, 234, 0.05); border-radius: 16px; border: 2px solid #244e4d;">
-                <div style="color: #53a5a5; font-size: 13px; margin-bottom: 8px;">2026 North Star Metric</div>
-                <div style="color: #53a5a5; font-size: 26px; font-weight: 700; margin-bottom: 6px;">Product Quality</div>
-                <div style="color: #3e444d; font-size: 14px;">
-                    Reduce active bugs • Reduce point releases • Ensure workflow consistency
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 12: Next Steps -->
-        <div class="slide title-slide">
-            <h1 class="main-title">Next Steps</h1>
-            <div style="font-size: 24px; color: #3e444d; margin-bottom: 40px; max-width: 800px; line-height: 1.6;">
-                Your Customer Intelligence journey is accelerating. With Enterpret as your foundation and 
-                a clear roadmap ahead, WooCommerce is positioned to transform merchant feedback into 
-                systematic Product Quality improvements, JTBD excellence, and simplified experiences.
-            </div>
-            <div class="highlight-box" style="max-width: 900px;">
-                <div style="font-size: 18px; color: #53a5a5; margin-bottom: 15px; font-weight: 600;">Next Steps</div>
-                <div style="color: #ffffff; font-size: 15px; line-height: 1.6; text-align: left;">
-                    <p style="margin-bottom: 12px; color: #ffffff;">✓ <strong>Phase 1 - Foundation:</strong> Form CI Steering Committee and draft strategy aligned to 2026 North Star</p>
-                    <p style="margin-bottom: 12px; color: #ffffff;">✓ <strong>Phase 2 - Quick Wins:</strong> Run first Wisdom queries on Product Quality and launch pilot closed-loop process</p>
-                    <p style="margin-bottom: 12px; color: #ffffff;">✓ <strong>Phase 3 - Scale Insights:</strong> Build role-based dashboards and begin ROI modeling</p>
-                    <p style="margin-bottom: 12px; color: #ffffff;">✓ <strong>Phase 4 - Operationalize:</strong> Establish monthly CI review cadence and launch training program</p>
-                </div>
-            </div>
-            <div style="margin-top: 40px; color: #53a5a5; font-size: 13px;">
-                Assessment based on the Customer Intelligence Maturity Framework<br>
-                Powered by Enterpret Customer Intelligence Platform
-            </div>
-        </div>
-
-        <!-- Navigation -->
-        <div class="navigation">
-            <button class="nav-button" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
-            <div class="slide-counter">
-                <span id="currentSlide">1</span> / <span id="totalSlides">10</span>
-            </div>
-            <div class="dot-indicators" id="dotIndicators"></div>
-            <button class="nav-button" id="nextBtn" onclick="changeSlide(1)">Next →</button>
-        </div>
-    </div>
-
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-
-        // Initialize
-        document.getElementById('totalSlides').textContent = totalSlides;
-        createDotIndicators();
-        updateSlide();
-
-        function createDotIndicators() {
-            const container = document.getElementById('dotIndicators');
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'dot';
-                dot.onclick = () => goToSlide(i);
-                container.appendChild(dot);
-            }
-        }
-
-        function updateSlide() {
-            // Hide all slides
-            slides.forEach(slide => slide.classList.remove('active'));
-            
-            // Show current slide
-            slides[currentSlide].classList.add('active');
-            
-            // Check if slide is scrollable and add indicator class
-            setTimeout(() => {
-                const currentSlideElement = slides[currentSlide];
-                const isScrollable = currentSlideElement.scrollHeight > currentSlideElement.clientHeight;
-                currentSlideElement.classList.toggle('has-scroll', isScrollable);
-                
-                // Reset scroll position to top
-                currentSlideElement.scrollTop = 0;
-            }, 50);
-            
-            // Update counter
-            document.getElementById('currentSlide').textContent = currentSlide + 1;
-            
-            // Update dots
-            const dots = document.querySelectorAll('.dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
+                        // Update active dot
+                        document.querySelectorAll('.nav-dot').forEach(d => d.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
             });
-            
-            // Update buttons
-            document.getElementById('prevBtn').disabled = currentSlide === 0;
-            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
-            
-            // Animate progress bars on competencies slide
-            if (currentSlide === 3) {
-                setTimeout(() => {
-                    document.querySelectorAll('.progress-fill').forEach(fill => {
-                        const width = fill.style.width;
-                        fill.style.width = '0%';
-                        setTimeout(() => {
-                            fill.style.width = width;
-                        }, 100);
-                    });
-                }, 300);
+
+            // Update active dot on scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '-50% 0px -50% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const slideId = entry.target.id;
+                        const slideNum = slideId.split('-')[1];
+
+                        document.querySelectorAll('.nav-dot').forEach(d => d.classList.remove('active'));
+                        document.querySelector(`[data-slide="${slideNum}"]`)?.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.slide').forEach(slide => {
+                observer.observe(slide);
+            });
+
+            // Add hover effect to feature cards
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Smooth scroll behavior for entire page
+            document.documentElement.style.scrollBehavior = 'smooth';
+        </script>
+    </div>
+
+    <!-- PASSWORD GATE LOGIC (NEW) -->
+    <script>
+        (function () {
+            const PASSWORD = "enterpret"; // ✅ CHANGE THIS
+            const STORAGE_KEY = "wisdom_marketing_deck_unlocked";
+
+            const body = document.body;
+            const input = document.getElementById("passwordInput");
+            const btn = document.getElementById("unlockBtn");
+            const err = document.getElementById("gateError");
+
+            function setUnlocked(unlocked) {
+                if (unlocked) {
+                    body.classList.remove("locked");
+                    body.classList.add("unlocked");
+                    try { localStorage.setItem(STORAGE_KEY, "1"); } catch (e) {}
+                } else {
+                    body.classList.add("locked");
+                    body.classList.remove("unlocked");
+                    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+                }
             }
-        }
 
-        function changeSlide(direction) {
-            currentSlide += direction;
-            if (currentSlide < 0) currentSlide = 0;
-            if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
-            updateSlide();
-        }
+            function tryUnlock() {
+                const val = (input.value || "").trim();
+                if (val === PASSWORD) {
+                    err.style.display = "none";
+                    input.value = "";
+                    setUnlocked(true);
+                } else {
+                    err.style.display = "block";
+                    input.focus();
+                    input.select();
+                }
+            }
 
-        function goToSlide(index) {
-            currentSlide = index;
-            updateSlide();
-        }
+            // Persist unlock in this browser
+            let alreadyUnlocked = false;
+            try { alreadyUnlocked = localStorage.getItem(STORAGE_KEY) === "1"; } catch (e) {}
+            if (alreadyUnlocked) setUnlocked(true);
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') changeSlide(-1);
-            if (e.key === 'ArrowRight') changeSlide(1);
-        });
+            btn.addEventListener("click", tryUnlock);
+            input.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") tryUnlock();
+            });
 
-        // Touch/swipe support for trackpad
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        document.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        document.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            if (touchEndX < touchStartX - 50) changeSlide(1);
-            if (touchEndX > touchStartX + 50) changeSlide(-1);
-        }
+            // Focus input on load
+            setTimeout(() => input?.focus(), 50);
+        })();
     </script>
 </body>
 </html>
